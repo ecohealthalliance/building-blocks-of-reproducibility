@@ -22,8 +22,9 @@ As scientists, reproducibility is the foundation of our work. Computers
 help with reproducibility because they are great a repetitive tasks and
 following instructions. However, a computer's ability to reproduce
 results is most often limited by the instructions provided by humans.
-
-??? Show of hands - How many of you have had trouble getting old code or
+  
+???
+Show of hands - How many of you have had trouble getting old code or
 code that was shared with you to run on your computer?
 
 Can a few people share the issues that they ran into?
@@ -40,25 +41,28 @@ class: center, middle
 >The ability to re-create results from the same data and code
 
 ???
-
 In the context of reproducible research software, reproducibility is the ability to recreate results from the same code and data. 
 ---
 
 # What is reproducibility?
 
-![reproducibility matrix](./img/reproducible-matrix.jpg) ??? This table
-from the turing-way project lays out how we will discuss different types
+![reproducibility matrix](./img/reproducible-matrix.jpg)   
+
+
+???
+This tablefrom the turing-way project lays out how we will discuss different types
 of results re-generation. These differ subtly from how the terms might
 be used in lab or field work. So to re-iterate - we are focusing on
 using the same code and same data to create the same result and calling
 that reproducibility.
 
 ---
-# Why do I care?
-1) Your workflows will be more efficient
-2) You can collaborate with others
-3) Your code will be ready for publication
-4) Your code can be reused (likely by you)
+# Why do I care?  
+
+1) Your workflows will be more efficient  
+2) You can collaborate with others  
+3) Your code will be ready for publication  
+4) Your code can be reused (likely by you)  
 
 ???
 By creating reproducible workflows you will be more efficient. For you, it will 
@@ -78,14 +82,13 @@ because you know what your code does and that your code will work if its moved f
 # How can I make my R code more reproducible?
 
 1)  Use an integrated development environment (IDE) like Rstudio or
-    VScode
-2)  Always start from a blank slate (save source not sessions)
-3)  Use projects and relative paths
-4)  Keep your code organized (avoid spaghetti code)
-5)  Leave yourself notes (literate programming)
+    VScode  
+2)  Always start from a blank slate (save source not sessions)  
+3)  Use projects and relative paths  
+4)  Keep your code organized (avoid spaghetti code)  
+5)  Leave yourself notes (literate programming)  
 
 ???
-
 For the rest of the time we are going to talk about how to make your R
 code more reproducible but these principles apply to pretty much any
 coding language you might use.
@@ -96,6 +99,8 @@ coding language you might use.
 - Facilitate good habits
 - Provide helpful hints and shortcuts for formmating
 
+???
+Open .R file for demo
 ---
 
 # Always start from a blank slate
@@ -103,6 +108,7 @@ coding language you might use.
 -   Use source code
 -   
 
+---
 class: center, middle
 
 # Build dynamic presentations
