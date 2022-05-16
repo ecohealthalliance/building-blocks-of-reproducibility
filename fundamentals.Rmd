@@ -5,6 +5,9 @@ author: "Collin Schwantes"
 date: "2022-05-17"
 output:
   ehastyle::eha_avenir_xar
+editor_options: 
+  markdown: 
+    wrap: 72
 ---
 
 ```{r setup, include=FALSE}
@@ -15,21 +18,20 @@ knitr::opts_chunk$set(echo = TRUE,
 
 # Problem statement
 
-As scientists, reproducibility is the foundation of our work. Computers help with
-reproducibility because they are great a repetitive tasks and following instructions.
-However, a computer's ability to reproduce results is most often limited by the
-instructions provided by humans.
+As scientists, reproducibility is the foundation of our work. Computers
+help with reproducibility because they are great a repetitive tasks and
+following instructions. However, a computer's ability to reproduce
+results is most often limited by the instructions provided by humans.
 
-???
-Show of hands - How many of you have had trouble getting old code or code that was
-shared with you to run on your computer? 
+??? Show of hands - How many of you have had trouble getting old code or
+code that was shared with you to run on your computer?
 
 Can a few people share the issues that they ran into?
 
-These are all problems with reproducibility. Today we are going to stick to the 
-basics like using relative paths and project based workflows, but eventually this 
-series of talks will get arrive at capturing computer environments and packing
-code for more complete reproducibility. 
+These are all problems with reproducibility. Today we are going to stick
+to the basics like using relative paths and project based workflows, but
+eventually this series of talks will get arrive at capturing computer
+environments and packing code for more complete reproducibility.
 
 ---
 class: center, middle
@@ -40,16 +42,16 @@ class: center, middle
 ???
 
 In the context of reproducible research software, reproducibility is the ability to recreate results from the same code and data. 
-
 ---
+
 # What is reproducibility?
 
-![reproducibility matrix](./img/reproducible-matrix.jpg)
-???
-This table from the turing-way project lays out how we will discuss different types
-of results re-generation. These differ subtly from how the terms might be used
-in lab or field work. So to re-iterate - we are focusing on using the same
-code and same data to create the same result and calling that reproducibility. 
+![reproducibility matrix](./img/reproducible-matrix.jpg) ??? This table
+from the turing-way project lays out how we will discuss different types
+of results re-generation. These differ subtly from how the terms might
+be used in lab or field work. So to re-iterate - we are focusing on
+using the same code and same data to create the same result and calling
+that reproducibility.
 
 ---
 # Why do I care?
@@ -71,16 +73,35 @@ for the publication process. Reviewers and readers will appreciate your prowess.
 2) Your code will be ready for future you to build off. It will be easier for you
 to lift a function or workflow out of one project and place it directly into another
 because you know what your code does and that your code will work if its moved from one folder to another or one computer to another. 
-
 ---
 
 # How can I make my R code more reproducible?
-1) Use an integrated development environment (IDE) like Rstudio or VScode
-2) Always start from a blank slate (save source not sessions)
-3) Use projects and relative paths
-4) Keep your code organized (avoid spaghetti code)
-5) Leave yourself notes (literate programming)
 
+1)  Use an integrated development environment (IDE) like Rstudio or
+    VScode
+2)  Always start from a blank slate (save source not sessions)
+3)  Use projects and relative paths
+4)  Keep your code organized (avoid spaghetti code)
+5)  Leave yourself notes (literate programming)
+
+???
+
+For the rest of the time we are going to talk about how to make your R
+code more reproducible but these principles apply to pretty much any
+coding language you might use.
+
+---
+# What is an IDE and why should I use ?
+- IDEs are designed to help you write code
+- Facilitate good habits
+- Provide helpful hints and shortcuts for formmating
+
+---
+
+# Always start from a blank slate
+
+-   Use source code
+-   
 
 class: center, middle
 
@@ -90,33 +111,35 @@ class: center, middle
 
 ### Use markdown to do it
 
----
+------------------------------------------------------------------------
 
 # Background
 
-* The `xaringan` package lets you make html presentations
+-   The `xaringan` package lets you make html presentations
 
-* The `ehastyle` package creates consistent formatting for your presentation
+-   The `ehastyle` package creates consistent formatting for your
+    presentation
 
-* These can be used to create slide shows that dynamically update with your analysis
+-   These can be used to create slide shows that dynamically update with
+    your analysis
 
----
+------------------------------------------------------------------------
 
 # A slide title
 
-* These list items are 
+-   These list items are
 
-* Place holders for your 
+-   Place holders for your
 
-* Content
+-   Content
 
-    - sub list item 1
+    -   sub list item 1
 
-    - sub list item 2
+    -   sub list item 2
 
-    - sub list item 3
-    
----
+    -   sub list item 3
+
+------------------------------------------------------------------------
 
 # Here is some code
 
@@ -133,7 +156,7 @@ ggplot2::diamonds %>%
 
 ```
 
----
+------------------------------------------------------------------------
 
 # Here is the plot
 
@@ -149,23 +172,11 @@ ggplot2::diamonds %>%
     coord_flip()
 
 ```
----
+
+------------------------------------------------------------------------
 
 # Two column slide
 
-.left-column[
-- Any content
-- You like
-- On the left
-]
+.left-column[ - Any content - You like - On the left]
 
-.right-column[
-```{r echo=FALSE, message=FALSE, warning=FALSE}
-ggplot2::diamonds %>%
-    ggplot(aes(x = cut, y = carat)) +
-    geom_violin() +
-    theme_xaringan() +
-    coord_flip()
-```
-]
-
+.right-column[]
