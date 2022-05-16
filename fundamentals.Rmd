@@ -73,8 +73,8 @@ for the publication process. Reviewers and readers will appreciate your prowess.
 2) Your code will be ready for future you to build off. It will be easier for you
 to lift a function or workflow out of one project and place it directly into another
 because you know what your code does and that your code will work if its moved from one folder to another or one computer to another. 
----
 
+---
 # How can I make my R code more reproducible?
 
 1)  Use an integrated development environment (IDE) like Rstudio or
