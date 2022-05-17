@@ -3,9 +3,9 @@ df_indent <- data.frame(a = 1:100,
 b="Some Text")
 
 # Click inside the function and use the tab button to see function arguments
-df_func <- data.frame(a = 1:10, row.names = FALSE)
+df_func <- data.frame(a = 1:10, row.names = FALSE,)
 
-# Use cmd+c to comment out code and to uncomment it
+# Use cmd+shift+c to comment out code and to uncomment it
 commented <- function(x){sprintf("an example %s",x)}
 
 # Code linting - Rstudio automatically notices certain grave errors
