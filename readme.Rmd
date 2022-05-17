@@ -1,0 +1,9 @@
+---
+title: "Readme"
+author: "Collin Schwantes"
+date: '2022-05-17'
+output: github_document
+---
+
+This repo contains a series of talks on reproducible workflows given as
+part of the M3 series at EHA. Talks will be written as RMD files and recordings will be available to people at EHA [here](https://airtable.com/appwlxIzmQx5njRtQ/tbledVCO9MRKkK9MW/viwd5Kt2QVw7lyAKb?blocks=hide).
