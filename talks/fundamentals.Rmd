@@ -183,17 +183,19 @@ write.csv(x = precious_obj,file =
 ]
 
 ???
+What do I mean when I say that code and data should be sourced? I mean that it should be intentionally saved and reloaded from outside your R session. 
+
 Use source code to define functions and create objects. This makes it much easier to recreate a workflow, pinpoint issues in code, and break code in workable chunks. 
-
---- 
-
+---
 # Always start from a blank slate
 ### Restart your session when you need to 
 
 Your R sessions should be dispensable - your code should be saved. 
 
 ???
-To restart your R session click Session > Restart R. This will get you back to essentially a blank slate. Any packages you had loaded will be unloaded, any items you stored in the session will be gone, and you will be free to work some section of the code.
+This is equivalent to the time on honored "Have you tried turning it off?" method for debugging. Sometimes the environment gets cluttered or something does not run correctly through no fault of yours. Being able to restart your session makes it possible to flip the "on and off" switch. 
+
+To restart your R session click Session > Restart R. This will get you back to essentially a blank slate. Any packages you had loaded will be unloaded, any items you stored in the session will be gone, and you will be able continue experimenting with your code knowing the underlying conditions are what you expect them to be. 
 
 Check in with audience
 
@@ -211,9 +213,10 @@ Benefits of projects:
 
 ???
 
-Rstudio - like most IDEs - uses the concept of a project. Projects are a collections of files, including your source code, that describe the computer environment, R settings, and where source code - your R or Rmd scripts - live.  
+Rstudio - like most IDEs - uses the concept of a project. Projects are a collections of files that describe the computer environment, R settings, and working directory - where your project lives in your computer.  
 
-Demo creating a new project from GUI
+Review bullets
+
 
 ---
 # Use projects and relative paths  
@@ -224,6 +227,10 @@ Demo creating a new project from GUI
 
 **Relative Path** = Location relative to current working directory where the file lives  
 - `outputs/precious_obj.csv`
+
+???
+
+Demo creating a new project from GUI and show how to use relative paths with getwd, dir.create, file.create, list.files
 
 ---
 # Use projects and relative paths  
@@ -321,4 +328,19 @@ shortcut - cmd+opt+shift+r
 ---
 class: center, middle
 
+
+![reproducibility matrix](`r here::here("img","reproducible-matrix.jpg")`)   
+
+
+???
+Using those five guiding principles, you should be able to give someone your code and data, and they should be able to reproduce your results. This ability to reproduce your work makes it more transparent and means that others can build on it - two hallmarks of good research
+
+---
+class: center, middle
+
 #Thanks!
+
+---
+class: center, middle
+
+#Questions?

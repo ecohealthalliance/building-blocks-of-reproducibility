@@ -452,17 +452,19 @@ write.csv(x = precious_obj,file =
 ]
 
 ???
+What do I mean when I say that code and data should be sourced? I mean that it should be intentionally saved and reloaded from outside your R session. 
+
 Use source code to define functions and create objects. This makes it much easier to recreate a workflow, pinpoint issues in code, and break code in workable chunks. 
-
---- 
-
+---
 # Always start from a blank slate
 ### Restart your session when you need to 
 
 Your R sessions should be dispensable - your code should be saved. 
 
 ???
-To restart your R session click Session &gt; Restart R. This will get you back to essentially a blank slate. Any packages you had loaded will be unloaded, any items you stored in the session will be gone, and you will be free to work some section of the code.
+This is equivalent to the time on honored &quot;Have you tried turning it off?&quot; method for debugging. Sometimes the environment gets cluttered or something does run correctly through no fault of yours. Being able to restart your session makes it possible to flip the &quot;on and off&quot; switch. 
+
+To restart your R session click Session &gt; Restart R. This will get you back to essentially a blank slate. Any packages you had loaded will be unloaded, any items you stored in the session will be gone, and you will be able continue experimenting with your code knowing the underlying conditions are what you expect them to be. 
 
 Check in with audience
 
