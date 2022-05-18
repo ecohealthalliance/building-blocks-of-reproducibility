@@ -1,0 +1,15 @@
+---
+title: "Building Blocks of Reproducibility"
+subtitle: "Strategies and workflows<br>for long term data storage"
+author: "Collin Schwantes"
+date: '2022-07-17'
+output:
+  ehastyle::eha_avenir_xar
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, fig.height=5, fig.align='center')
+```
+
+
+
