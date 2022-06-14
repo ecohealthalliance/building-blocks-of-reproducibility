@@ -43,12 +43,20 @@ In order for the outputs of collaboration and exploration to be reproducible, yo
 
 *Github* - A GIT based collaboration platform and remote code repository
 
-
 ## What is GIT?
 
 ![xkcd comic about git](https://imgs.xkcd.com/comics/git.png)
 
-## What is GIT?
+## Basic Terms
+
+- **Repo**: code repository - a folder containing your code
+- `branch`: a divergence from the main code base. Used for feature development,experimentation, or bug fixes. 
+- `commit`: commit lets you track a change to a file, requires a message. These should be brief but informative. 
+- `merge`: join two branches
+
+## How does GIT work?
+
+You create a set of pointers that track changes of files in a repository and GIT provides rules governing how those changes should be merged. 
 
 ```{r echo=FALSE}
 
@@ -75,9 +83,9 @@ graph_obj <- ggraph(graph) +
 dml(ggobj = graph_obj)
 ```
 
+## What is a commit?
 
-
-## What is GIT?
+Each pointer is created by a commit. Commits essentially write the history of your repo. Each commit has a unique ID, information about what branch it currently lives on, information about what changed, and (ideally) a brief informative message describing that change.   
 
 ```{r echo=FALSE}
 
@@ -93,6 +101,32 @@ graph_obj <- ggraph(graph) +
 
 dml(ggobj = graph_obj)
 ```
+
+## When should you be making commits?
+
+- Before a commit becomes hard describe with a single sentence
+- After making a change to your repository that accomplishes something
+- After making a change to your repository that you might want to undo
+
+## Typical git workflow
+
+0. `pull` any changes down from remote 
+1. Create or change some files
+2. Use `status` to check which files changed and your current branch
+2. `add` files so GIT knows to include them in the commit
+3. `commit` those files to preserve a certain state
+4. `push` that commit to Remote
+
+## Remote? 
+
+![princess bride](https://pbs.twimg.com/tweet_video_thumb/FJo5gIoUYAMK67O.jpg)
+
+## Github
+
+- Acts as a remote repository 
+- Facilitates complicated GIT actions
+- Allows us to communicate about code in a central location
+
 
 ## To Review
 
