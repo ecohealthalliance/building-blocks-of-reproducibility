@@ -18,11 +18,30 @@ library(dplyr)
 library(igraph)
 ```
 
+## Review From Session 1
+
+**Reproducibility** is the ability to re-create results from the same data and code
+
+Basic Guidance:
+
+1)  Use an IDE like Rstudio   
+2)  Always start from a blank slate (save source not sessions)  
+3)  Use projects and relative paths  
+4)  Keep your code organized (avoid spaghetti code)  
+5)  Leave yourself notes (literate programming) 
+
+::: notes
+Working from the same definition for reproducibility,  Today's session will focus on using GIT and Github to help us manage  code  and make it available to collaborators. It builds directly the basic guidance we laid out during the first session - with a particular emphasis on source over session.  
+:::
+
 ## Problem statement
 
-Writing code for research purposes necessarily involves exploring data and analyses to gain understanding. It also often involves collaboration. Both collaboration and exploration can increase entropy in your code base through undocumented changes, swelling the number of files, and bespoke systems for understanding which is the correct file. 
+Writing code for research purposes involves exploring data and analyses to gain understanding. It also often involves collaboration. Both collaboration and exploration can increase entropy in your code base through undocumented changes, swelling the number of files, and bespoke systems for understanding which is the correct file. 
 
-I am using the right file? Did we include the most up to date figure in the paper? What exactly did I change in that file and why? 
+
+::: notes
+I am using the right file? Did we include the most up to date figure in the paper? Whats the difference between final CJS and final final NR? 
+:::
 
 ## Solution
 
@@ -34,8 +53,9 @@ I am using the right file? Did we include the most up to date figure in the pape
 - harmonize
 
 
-
+::: notes
 In order for the outputs of collaboration and exploration to be reproducible, you need to have a system for organizing, tracking, sharing, and harmonizing code. A version control system  allows you and your collaborators to document specific changes in the code, harmonize code from multiple contributors, and explore new ways of analyzing your data without ballooning the number of files. 
+:::
 
 ## Version control and collabortaion with GIT and Github
 
@@ -43,22 +63,40 @@ In order for the outputs of collaboration and exploration to be reproducible, yo
 
 *Github* - A GIT based collaboration platform and remote code repository
 
+::: notes
+At EHA we use GIT for version control and Github to facilitate collaboration 
+:::
+
 ## What is GIT?
 
+:::::: {.columns}
+::: {.column}
+- A flexible and powerful version control system
+:::
+
+::: {.column}
 ![xkcd comic about git](https://imgs.xkcd.com/comics/git.png)
+:::
+::::::
+
+::: notes
+
+Git is a distributed version control system that allows you to collaborate with as many people as you like. It uses pointers and tree like structures to manage differences in files
+and has rules for how to resolve those differences. 
+
+:::
 
 ## Basic Terms
 
 - **Repo**: code repository - a folder containing your code
 - `branch`: a divergence from the main code base. Used for feature development,experimentation, or bug fixes. 
 - `commit`: commit lets you track a change to a file, requires a message. These should be brief but informative. 
-- `merge`: join two branches
+- `merge`: join two branches - harmonize your code
 
 ## How does GIT work?
 
-You create a set of pointers that track changes of files in a repository and GIT provides rules governing how those changes should be merged. 
 
-```{r echo=FALSE}
+```{r echo=FALSE, ph=officer::ph_location_type(type="body")}
 
 git_df <- data.frame(from = c(1,2,4,2,3,5,4,7),
                      to = c(2,4,6,3,5,6,7,8),
@@ -73,7 +111,7 @@ graph <- graph_from_data_frame(git_df) %>%
 
 # Not specifying the layout - defaults to "auto"
 graph_obj <- ggraph(graph) + 
-    geom_edge_link(aes(colour = branch), width= 3) + 
+    geom_edge_bend(aes(colour = branch), width= 10) +
     geom_node_point(size = 30) +
     geom_node_label(aes(label = commit_msg), repel = FALSE) +
   theme_void() +
@@ -83,16 +121,22 @@ graph_obj <- ggraph(graph) +
 dml(ggobj = graph_obj)
 ```
 
+::: notes
+You can think of GIT like a time line where you are taking snap shots of your code. 
+
+Each snapshot tracks changes to files in a repository and GIT provides rules governing how those changes should be merged when timelines diverge or branch. 
+
+:::
+
 ## What is a commit?
+  
 
-Each pointer is created by a commit. Commits essentially write the history of your repo. Each commit has a unique ID, information about what branch it currently lives on, information about what changed, and (ideally) a brief informative message describing that change.   
-
-```{r echo=FALSE}
+```{r echo=FALSE, ph=officer::ph_location_type(type="body")}
 
 
 # Not specifying the layout - defaults to "auto"
 graph_obj <- ggraph(graph) + 
-    geom_edge_link(aes(colour = branch), width= 3) + 
+    geom_edge_bend(aes(colour = branch), width= 10) +
     geom_node_point(size = 30) +
     geom_node_label(aes(label = commit), repel = FALSE) +
   theme_void() +
@@ -102,30 +146,166 @@ graph_obj <- ggraph(graph) +
 dml(ggobj = graph_obj)
 ```
 
+:::notes
+
+Each snapshot is created by a commit. Each commit has a unique ID, information about what branch it currently lives on, information about what changed, and (ideally) a brief informative message describing that change. 
+
+:::
+
 ## When should you be making commits?
 
 - Before a commit becomes hard describe with a single sentence
 - After making a change to your repository that accomplishes something
 - After making a change to your repository that you might want to undo
 
+## What is a branch?
+
+```{r echo=FALSE, ph=officer::ph_location_type(type="body")}
+
+
+# Not specifying the layout - defaults to "auto"
+graph_obj <- ggraph(graph) + 
+    geom_edge_bend(aes(colour = branch), width= 10) +
+    geom_node_point(size = 30) +
+    geom_node_label(aes(label = commit_msg), repel = FALSE) +
+  theme_void() +
+  scale_y_reverse() +
+  coord_flip() 
+
+dml(ggobj = graph_obj)
+```
+
+::: notes
+
+Branches are splits in the timeline of your code. This is one of the best features
+of git for experimentation and collaboration.
+
+Branches allow you to add, fix, or enhance components of your repo without changing
+the core code. In this example we are creating a feature branch that adds visualization
+capabilities and a fix branch that corrects an issue with file paths in the analysis
+output. 
+
+:::
+
+## When to create branches?
+
+- After you identify a specific component of the code you would like to change
+- When your changes might break things, especially for collaborators
+- When you would like to add a new feature to code 
+
+
 ## Typical git workflow
 
+1. Use `status` to check your current branch and changes to tracked files
 0. `pull` any changes down from remote 
 1. Create or change some files
-2. Use `status` to check which files changed and your current branch
+2. Use `status` to see which files changed
 2. `add` files so GIT knows to include them in the commit
 3. `commit` those files to preserve a certain state
 4. `push` that commit to Remote
 
 ## Remote? 
 
-![princess bride](https://pbs.twimg.com/tweet_video_thumb/FJo5gIoUYAMK67O.jpg)
+```{r, echo=FALSE, out.width="50%", fig.cap="Princess Bride"}
+knitr::include_graphics("https://pbs.twimg.com/tweet_video_thumb/FJo5gIoUYAMK67O.jpg")
+```
+
+::: notes
+
+the remote repository is essentially the thing that connects collaborators. 
+
+:::
 
 ## Github
 
+
+:::::: {.columns}
+::: {.column}
+```{r layout='Two Content', ph=officer::ph_location_left()}
+colab_df <- data.frame(from = c(1,1),
+                     to = c(2,3),
+                     action = c("<<< pull <<<","<<< push <<<")
+                     )
+
+graph <- graph_from_data_frame(colab_df) %>% 
+  set_vertex_attr("name",value = c("Github","Noam","Emma"))  %>% 
+  set_vertex_attr("type",value = c("Remote","Human","Human"))  
+
+
+
+# Not specifying the layout - defaults to "auto"
+graph_obj_col <- ggraph(graph,layout = 
+                          "tree") + 
+    geom_edge_link( width= 10, aes(label = action), color = "#60a644",angle_calc = 'along') +
+    geom_node_point(size = 30, aes( color = type)) +
+    geom_node_label(aes(label = name), repel = FALSE) +
+    scale_color_brewer(type = "qual") +
+  theme_void() +
+  theme(legend.position = "none")
+
+dml(ggobj = graph_obj_col)
+```
+:::
+
+::: {.column}
 - Acts as a remote repository 
-- Facilitates complicated GIT actions
 - Allows us to communicate about code in a central location
+- Facilitates complicated GIT actions
+
+:::
+::::::
+
+::: notes
+
+In our case - Github hosts the remote repository. In this example, Noam
+and Emma are collaborating on some code and using github as an intermediary to share
+that code. Emma pushes changes up to github, and Noam pulls them down. 
+
+Emma and Noam coordinate their work through issues created on github and use
+github to let each other know when branches are ready to be merged via pull requests. 
+
+:::
+
+## Github Tour: Code
+ 
+  - branches
+  - Readme
+  - cloning/downloading
+  
+## Github Tour: Issues
+
+  - new issue - labeling
+  - discussion issues
+  - linking issues
+  
+## Github Tour: Pull Requests
+
+  - linking to issues
+  - discussion
+  - in code comments
+
+## Github Exercise
+
+- clone repo, create a branch, modify the readme.md file, push to github
+
+## Github bells and whistles
+
+- A lot documentation and help
+- Access control to repos
+- Automations with Github Actions
+- Repo Templates
+- Integrations with Slack, Airtable, Zenodo, Rstudio, and MANY more
+
+::: notes
+
+Because GIT and Github is the preferred version control system, its generally very well documented and there are a lot 
+of extra features readily available.  
+
+:::
+
+## Aren't we supposed to be talking about reproducbility?
+
+
 
 
 ## To Review
