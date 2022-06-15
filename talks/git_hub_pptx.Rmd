@@ -284,10 +284,6 @@ github to let each other know when branches are ready to be merged via pull requ
   - discussion
   - in code comments
 
-## Github Exercise
-
-- clone repo, create a branch, modify the readme.md file, push to github
-
 ## Github bells and whistles
 
 - A lot documentation and help
@@ -303,9 +299,17 @@ of extra features readily available.
 
 :::
 
+## Github Exercise
+
+- clone repo, create a branch, modify the readme.md file, push to github
+
 ## Aren't we supposed to be talking about reproducbility?
 
-
+- Git and Github make your workflow code centric 
+- It pushes you to used self contained repositorries/projects
+- Through commits, pull requests, and issues you document the history of your code
+- Github can make your code accessible to others
+- 
 
 
 ## To Review
@@ -315,6 +319,7 @@ of extra features readily available.
 3)  Use projects and relative paths  
 4)  Keep your code organized (avoid spaghetti code)  
 5)  Leave yourself notes (literate programming) 
+6)  Use a version control system
 
  
 ##Thanks!
