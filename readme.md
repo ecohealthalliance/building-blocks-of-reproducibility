@@ -16,3 +16,4 @@ The series will include talks on:
 -   Package management with `renv`
 -   Reproducible workflows with `targets`
 -   Reproducing compute environments using containerization
+-   Taking down the patriarcy
