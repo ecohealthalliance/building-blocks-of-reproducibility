@@ -11,7 +11,7 @@ recordings will be available to people at EHA
 The series will include talks on:
 
 -   [x] Fundamentals of reproducibility - making your code portable
--   Version control and collaboration with git and Github
+-   [x] Version control and collaboration with git and Github
 -   Metadata and long term data archiving
 -   Package management with `renv`
 -   Reproducible workflows with `targets`
