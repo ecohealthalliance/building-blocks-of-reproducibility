@@ -3,6 +3,8 @@ Readme
 Collin Schwantes
 2022-05-17
 
+😎
+
 This repo contains a series of talks on reproducible workflows given as
 part of the M3 series at EHA. Talks will be written as RMD files and
 recordings will be available to people at EHA
