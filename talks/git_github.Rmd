@@ -1,0 +1,98 @@
+---
+title: "Building Blocks of Reproducibility"
+subtitle: "Part 2: Version control and collabortaion<br>with GIT and Github"
+author: "Collin Schwantes"
+date: "2022-06-14"
+output:
+  ehastyle::eha_avenir_
+editor_options: 
+  markdown: 
+    wrap: 72
+---
+
+```{r setup, include=FALSE}
+
+knitr::opts_chunk$set(echo = TRUE,
+                      fig.height=5,
+                      fig.align='center')
+
+
+library(cowplot)
+library(magick)
+```
+
+# Problem statement
+
+Writing code for research purposes necessarily involves exploring data and analyses to gain understanding. It also often involves collaboration. Both collaboration and exploration can increase entropy in your code base through undocumented changes, swelling the number of files, and bespoke systems for understanding which is the correct file. 
+
+???
+
+I am using the right file? Did we include the most up to date figure in the paper? What exactly did I change in that file and why? 
+
+---
+# Solution
+
+### Use a version control system:
+
+- organize
+- track
+- share
+- harmonize
+
+
+???
+
+In order for the outputs of collaboration and exploration to be reproducible, you need to have a system for organizing, tracking, sharing, and harmonizing code. A version control system  allows you and your collaborators to document specific changes in the code, harmonize code from multiple contributors, and explore new ways of analyzing your data without ballooning the number of files. 
+
+---
+# Version control and collabortaion with GIT and Github
+
+*GIT* - Distributed Version Control System
+
+*Github* - A GIT based collaboration platform and remote code repository 
+  
+???
+To orgnanize, version, and share code we use Git and Github. 
+
+---
+class: center, middle
+
+# What is GIT?
+
+![xkcd comic about git](https://imgs.xkcd.com/comics/git.png)
+---
+class: center, middle
+
+# What is GIT?
+
+```{r echo=FALSE}
+fig <- cowplot::ggdraw() + cowplot::draw_image(image = here::here("img","git_tree.svg"))
+
+plot(fig)
+```
+
+???
+
+
+
+---
+
+
+
+
+---
+# To Review
+
+1)  Use an IDE like Rstudio   
+2)  Always start from a blank slate (save source not sessions)  
+3)  Use projects and relative paths  
+4)  Keep your code organized (avoid spaghetti code)  
+5)  Leave yourself notes (literate programming) 
+
+???
+
+
+---
+class: center, middle
+
+#Thanks!
