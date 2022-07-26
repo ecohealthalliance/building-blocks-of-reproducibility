@@ -11,7 +11,7 @@ you can put that data into an database so it can scale to billions of rows.
 - Visualize data models to help understand relationships
 - Joins based on known shared keys and a `flatten` operation that automatically follows keys to join tables and performs column name disambiguation
 - Constraint checking for fields
-- There is a single point of truth for data (they are normalized) so that updating a value in one place propagates its across linked tables
+- There is a single point of truth for data (they are normalized) so that updating a value in one place propagates across linked tables
 
 [Getting started](https://cynkra.github.io/dm/articles/dm.html)
 
