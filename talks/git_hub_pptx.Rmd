@@ -22,13 +22,12 @@ library(igraph)
 
 **Reproducibility** is the ability to re-create results from the same data and code
 
-Basic Guidance:
-
-1)  Use an IDE like Rstudio   
-2)  Always start from a blank slate (save source not sessions)  
-3)  Use projects and relative paths  
-4)  Keep your code organized (avoid spaghetti code)  
-5)  Leave yourself notes (literate programming) 
+**Basic Guidance**:  
+1. Use an IDE like Rstudio   
+2. Always start from a blank slate (save source not sessions)  
+3. Use projects and relative paths  
+4. Keep your code organized (avoid spaghetti code)  
+5. Leave yourself notes (literate programming) 
 
 ::: notes
 Working from the same definition for reproducibility,  Today's session will focus on using GIT and Github to help us manage  code  and make it available to collaborators. It builds directly the basic guidance we laid out during the first session - with a particular emphasis on source over session.  
@@ -193,6 +192,39 @@ output.
 - When your changes might break things, especially for collaborators
 - When you would like to add a new feature to code 
 
+## Things to be aware of
+
+- You might accidentally overwrite commits on `main` when you merge if you've made changes to the same file 
+- Merges can have conflicts, follow the prompts given to you by git to resolve them  
+- You can delete branches after you merge your code
+
+## Things to be aware of
+```{r message=FALSE, warning=FALSE, include=TRUE}
+
+git_df2 <- data.frame(from = c(1,2,3,4,5,3,7),
+                       to = c(2,3,4,5,6,7,8),
+                     branch = c(rep("main",5),rep("fix",2))
+                     )
+
+graph2 <- graph_from_data_frame(git_df2) %>% 
+  set_vertex_attr("commit",value = sprintf("Commit %s",c("4d52","a7da","6895","b85f","039e","85a9","0f9b","7yh3")))  %>% 
+  set_vertex_attr("commit_msg",value = sprintf("%s",c("First Commit","added analysis 1","Manage analysis outputs","plotting function","adding error visualization","fixed typo in file path","Merge plotting function","using here package")))
+
+
+
+# Not specifying the layout - defaults to "auto"
+graph_obj2 <- ggraph(graph2) + 
+    geom_edge_bend(aes(colour = branch), width= 10) +
+    geom_node_point(size = 30) +
+    geom_node_label(aes(label = commit_msg), repel = FALSE) +
+  theme_void() +
+  scale_y_reverse() +
+  coord_flip() 
+
+
+dml(ggobj = graph_obj2)
+```
+
 
 ## Typical git workflow
 
@@ -314,83 +346,12 @@ of extra features readily available.
 
 ## To Review
 
-1)  Use an IDE like Rstudio   
-2)  Always start from a blank slate (save source not sessions)  
-3)  Use projects and relative paths  
-4)  Keep your code organized (avoid spaghetti code)  
-5)  Leave yourself notes (literate programming) 
-6)  Use a version control system
+1. Use an IDE like Rstudio   
+2. Always start from a blank slate (save source not sessions) 3. Use projects and relative paths  
+4. Keep your code organized (avoid spaghetti code)  
+5. Leave yourself notes (literate programming) 
+6. Use a version control system
 
  
-##Thanks!
+## Thanks!
 
-
-## R Markdown
-
-This is an R Markdown presentation. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
-
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document.
-
-## Slide with Bullets
-
-- Bullet 1
-- Bullet 2
-- Bullet 3
-
-## Slide with R Output
-
-```{r cars, echo = TRUE}
-summary(cars)
-```
-
-## Slide with Table
-
-```{r iristable}
-head(iris)
-```
-## Slide to the Right 
-
-:::::: {.columns}
-::: {.column}
-Use `layout='Two Content', ph=officer::ph_location_right()` 
-to properly place content 
-:::
-
-::: {.column}
-
-```{r righttable, layout='Two Content',ph=officer::ph_location_right()}
-head(cars,10)
-```
-:::
-::::::
-
-## Slide to the left 
-
-:::::: {.columns}
-::: {.column}
-```{r layout='Two Content', ph=officer::ph_location_left()}
-head(cars)
-```
-:::
-
-::: {.column}
-- Left side table
-:::
-::::::
-
-##  Slide with SVG Plot
-
-```{r pressure}
-## use dml to make the plot an editable svg in ppt
-dml(plot(pressure))
-```
-
-## Slide with SVG Ggplot
-
-```{r }
-ggplotObj <- ggplot(mtcars, aes(wt, mpg), col = displ) +
-  geom_point()
-
-## pass a ggplot object to dml 
-dml(ggobj = ggplotObj)
-```
