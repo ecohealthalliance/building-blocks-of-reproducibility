@@ -179,6 +179,25 @@ Very bare bones - links to talk and resources mentioned in talk
   
 ### Targets External Files
 
+- targettopia -- tidyverse for targets
+- for rmarkdown reports - most calls should be calls to tar_read and tar_load
+- use targets to create all computations - use rmd to explain them
+
+#### External files
+
+fs::dir_tree("_targets") >>> shows file structure
+
+- need to create a target that returns a path 
+- using an external target as an outputs - 
+  - saves file and outputs a path
+    - invisible(PATH) - trying to get a side effect (saving file)
+    
+#### tarchetypes
+- use `tar_render` 
+  - name, report, options for rmarkdown render
+
+  
+
 
      
 
