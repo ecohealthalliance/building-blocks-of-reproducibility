@@ -196,6 +196,21 @@ fs::dir_tree("_targets") >>> shows file structure
 - use `tar_render` 
   - name, report, options for rmarkdown render
 
+### Workflow Talk
+
+- get in the pocket
+- whats the priority? 
+  - can't write a unit test for methodology = prioritize making 
+  things clear and key decision points
+  
+#### notebooks
+- great - but slow and have tensions between code and text
+
+#### Domain specific Folder Structures 
+- `workflowr`, `represtools` -- packages that save you a lot of book keeping and decisions about structure
+- Anytime in a domain mismatch 
+- 
+
   
 
 

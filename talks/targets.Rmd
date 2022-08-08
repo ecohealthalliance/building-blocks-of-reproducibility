@@ -1,0 +1,46 @@
+---
+title: "Targets for Reproducibility"
+author: "Collin Schwantes"
+date: "2022-08-08"
+output: html_document
+---
+## 
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+# library(officedown)
+library(ggplot2)
+# library(rvg)
+library(ggraph)
+library(ehastyle)
+library(dplyr)
+library(igraph)
+```
+
+## Review from previous talks
+
+**Reproducibility** is the ability to re-create results from the same data and code
+
+1)  Use an IDE like Rstudio   
+2)  Always start from a blank slate (save source not sessions)  
+3)  Use projects and relative paths  
+4)  Keep your code organized (avoid spaghetti code)  
+5)  Leave yourself notes (literate programming) 
+6)  Use a version control system
+
+## Briefest Review of Targets
+- Aim is to make analysis workflows more reproducible
+- Create a set of steps and execute them
+- targets = nouns and functions = verbs
+- Outputs are stored and only re-written if something changes 
+-  See Noam's talk
+
+## Targets and reproducibility
+
+- Targets allows us to follow the spirit of saving source while keeping some components of our session
+- Provides a common structure for projects
+  - Functions in an /R folder, packages.R, and _targets.R
+- Reduces the amount of documentation needed to execute the code 
+  
+
+
