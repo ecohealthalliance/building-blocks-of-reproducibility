@@ -28,29 +28,69 @@ library(igraph)
 2)  Always start from a blank slate (save source not sessions)  
 3)  Use projects and relative paths  
 4)  Keep your code organized (avoid spaghetti code)  
-5)  Leave yourself notes (literate programming) 
-6)  Use a version control system
+5)  Leave yourself notes (literate programming)  
+6)  Use a version control system  
 ---
+
+# Today's talk
+
+- What is targets
+- Why should I care?
+- How does it fit into our reproducibility framework
+- Who's already using targets?
+- Demo - setting up a project with targets
+  - init
+  - creating targets
+  - targets and RMD
+  - debugging targets
+  - targets and github
+
+---
+
 # Briefest Review of Targets
 
-- Aim is to make analysis workflows more reproducible
-- Create a set of steps and execute them
-  - targets = nouns and functions = verbs
+- Targets is an R package that makes analysis workflows more reproducible
+- Create a set of steps and execute them. Targets figures out dependencies between steps. 
 - Outputs are stored and only re-written if something changes 
 -  See Noam's talk
----
 
+---
 # Targets and reproducibility
 
-- Allows us to follow the spirit of a source first workflow while keeping some components of our session 
+- Always starts from a blank slate
   - each time you run `tar_make` its run in a fresh environment BUT any objects that haven't changed will be loaded. 
 - Provides a common structure for projects
   - Functions in an /R folder, packages.R, and _targets.R
-- Reduces the amount of documentation needed to execute the code 
+- Documentation becomes easier to write because everything fits together in a specific way. 
+
+???
+
+2)  Always start from a blank slate (save source not sessions)  
+3)  Use projects and relative paths  
+4)  Keep your code organized (avoid spaghetti code)  
+5)  Leave yourself notes (literate programming)  
+
+
+---
+class: left, left
+
+# Why use targets
+
+1) It saves you time during complicated analyses  
+2) It saves you time during project setup - project structure is predefined  
+3) It helps you organize your code  
+
+---
+
+# Where is `targets` being used at EHA?
+- [Automated Data Quality Control for Nipah Bangladesh](https://github.com/ecohealthalliance/nipah-bangladesh-automation/blob/main/_targets.R)
+- [Computationally Expensive Model Builds for DTRA-ML](https://github.com/ecohealthalliance/dtra-ml/blob/main/_targets.R)
+- Others?
+
 ---
 
 # Initiating Targets 
-
+- Helpful packages: `tflow`,`tarchetypes`, `usethis`, `fnmate`
 - Use `tflow::use_tflow()` to setup a minimalist and ergonomic targets workspace
 
 ```
@@ -64,6 +104,7 @@ tflow::use_tflow()
 ├── packages.R
 └── targets_example.Rproj
 ```
+
 ---
 # Layout workflow in _targets.R
 
@@ -84,10 +125,6 @@ bat_validation <-  tar_plan(
 
 )
 
-## plot data
-bat_plot <- tar_plan(
-
-)
 
 ## make report
 
@@ -95,32 +132,80 @@ bat_report <- tar_plan(
   tarchetypes::tar_render(...)
 )
 
-
 ```
----
 
+---
 
 # Loading data 
 - Straight forward with local data
 - More complicated with [cloud hosted data](https://airtable.com/apps4rtLTXjRQHIvY/tblArZCjsYtZr2LEh/viwcs3ZSXjugmPk7v?blocks=hide)
 
 ```
-csv_bat_data <- tar_plan(
-  targets::tar_target(bat_data_file, "bat_data.csv",format = "file),
-  targets::tar_target(bat_data,read.csv(bat_data_file)
-)
+bat_data <- tar_plan(
+  targets::tar_target(bat_data_file, "bat_data.csv",format = "file"),
+  targets::tar_target(bat_data,read.csv(bat_data_file))
 
 
 ## will targets to be able to detect changes in the data on airtable?
 
-airtable_bat_data <- tar_plan(
-  targets::tar_target(bat_data_table, get_bat_data(base = "apps4rtLTXjRQHIvY", table = "bats"))
+  targets::tar_target(bat_data_airtable, get_bat_data(base = "apps4rtLTXjRQHIvY", table = "bats"))
 )
 ```
 
 ???
 
 Ask Noam/Nathan how they deal with this
+---
 
-# 
+# Validating data
+- usethis::use_r("validate_bat_data")
+
+```
+## validate data
+bat_validation <-  tar_plan(
+  targets::tar_target(validated_data, validate_bat_data(airtable_bat_data, csv_bat_data)
+  )
+)
+```
+
+---
+
+# Creating RMD reports/dashboards
+- Use `tarchetypes::tar_render`
+- Use calls to `targets::tar_read()` to load objects in rmd
+
+```
+## make report
+
+bat_report <- tar_plan(
+  tarchetypes::tar_render(bat_validation_report,"reports/bat_validation")
+)
+```
+???
+
+Show dir_tree in example
+---
+
+# Debugging
+- Visualize targets graph
+- traceback(), debug(function) and undebug(function) from base R
+- `tar_meta(fields = "error")`
+- `debug(BROKEN_FUNCTION)`
+- `tar_make(names = BROKEN_TARGET, callr_function = NULL)`
+  - opens a browser window at the function
+  you're debugging
+
+---
+
+# Targets and Github
+- Be mindful of whats in your _targets folder
+- 
+
+---
+
+# Branching
+
+Static branching
+Dynamic branching
+
 

@@ -13,7 +13,7 @@
 
 <meta name="date" content="2022-08-05" />
 
-<title>notes on Noam’s talk</title>
+<title>EHA Targets Materials</title>
 
 <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
@@ -363,15 +363,15 @@ pre code {
 
 
 
-<h1 class="title toc-ignore">notes on Noam’s talk</h1>
+<h1 class="title toc-ignore">EHA Targets Materials</h1>
 <h4 class="author">Collin Schwantes</h4>
 <h4 class="date">2022-08-05</h4>
 
 </div>
 
 
-<div id="targets" class="section level2">
-<h2>Targets</h2>
+<div id="targets-talk-from-noam" class="section level3">
+<h3>Targets talk from Noam</h3>
 <ul>
 <li>aim to to make analysis workflow more reproducible</li>
 <li>want to be able to build on our work
@@ -380,9 +380,8 @@ pre code {
 <li>return to a code base in 2 years</li>
 </ul></li>
 </ul>
-</div>
-<div id="reproducibility" class="section level2">
-<h2>Reproducibility</h2>
+<div id="reproducibility" class="section level4">
+<h4>Reproducibility</h4>
 <ul>
 <li>Workflow &gt;&gt; Targets</li>
 <li>Environment</li>
@@ -392,16 +391,16 @@ pre code {
 <li>Documentation</li>
 </ul>
 </div>
-<div id="targets-1" class="section level2">
-<h2>Targets</h2>
+<div id="targets" class="section level4">
+<h4>Targets</h4>
 <ul>
 <li>standard project structure</li>
 <li>reduces documentation — closer to self documentation</li>
 <li>testing can be captured in targets</li>
 </ul>
 </div>
-<div id="demo" class="section level2">
-<h2>Demo</h2>
+<div id="demo" class="section level4">
+<h4>Demo</h4>
 <ul>
 <li><a href="https://github.com/ecohealthalliance/targets-example" class="uri">https://github.com/ecohealthalliance/targets-example</a></li>
 <li>Create a set of steps</li>
@@ -411,19 +410,19 @@ pre code {
 <li>packages.R - common place for listing packages used</li>
 </ul>
 </div>
-<div id="should-this-be-encrypted" class="section level2">
-<h2>should this be encrypted?</h2>
+<div id="should-this-be-encrypted" class="section level4">
+<h4>should this be encrypted?</h4>
 <p>_targets &gt;&gt; files that save R objects</p>
 </div>
-<div id="targets.r" class="section level2">
-<h2>_targets.R</h2>
+<div id="targets.r" class="section level4">
+<h4>_targets.R</h4>
 <ul>
 <li>source packages and functions</li>
 <li>tar_plan- groups of targets</li>
 </ul>
 </div>
-<div id="target" class="section level2">
-<h2>target</h2>
+<div id="target" class="section level4">
+<h4>target</h4>
 <ul>
 <li>name</li>
 <li>function</li>
@@ -440,37 +439,37 @@ pre code {
 </blockquote>
 </blockquote>
 </div>
-<div id="targets-network" class="section level2">
-<h2>Targets network</h2>
+<div id="targets-network" class="section level4">
+<h4>Targets network</h4>
 <ul>
 <li>A -&gt; B -&gt; C</li>
 <li>tar_make() &gt;&gt; builds everything OR doesnt if nothing is
 outdated</li>
 </ul>
 </div>
-<div id="tar_destroy" class="section level2">
-<h2>tar_destroy</h2>
+<div id="tar_destroy" class="section level4">
+<h4>tar_destroy</h4>
 <ul>
 <li>removes old targets objects</li>
 </ul>
 </div>
-<div id="tar_visnetwork" class="section level2">
-<h2>tar_visnetwork</h2>
+<div id="tar_visnetwork" class="section level4">
+<h4>tar_visnetwork</h4>
 <ul>
 <li>lays out your project</li>
 <li>triangles = functions or objects</li>
 <li>circles = targets</li>
 </ul>
 </div>
-<div id="does-order-matter" class="section level2">
-<h2>Does order matter?</h2>
+<div id="does-order-matter" class="section level4">
+<h4>Does order matter?</h4>
 <ul>
 <li>No</li>
 <li>NOT procedural</li>
 </ul>
 </div>
-<div id="making-a-report" class="section level2">
-<h2>making a report</h2>
+<div id="making-a-report" class="section level4">
+<h4>making a report</h4>
 <ul>
 <li>tar_load(some_target) &gt;&gt;&gt; loads target into
 environment</li>
@@ -479,49 +478,49 @@ object</li>
 </ul>
 <p>Using either in an rmd adds rmd to _targets network?</p>
 </div>
-<div id="can-you-add-metadata-to-objects" class="section level2">
-<h2>can you add metadata to objects?</h2>
+<div id="can-you-add-metadata-to-objects" class="section level4">
+<h4>can you add metadata to objects?</h4>
 <ul>
 <li>Nope</li>
 <li>but you can get metadata from tar_meta()</li>
 </ul>
 </div>
-<div id="creating-functions-directly-in-the-target" class="section level2">
-<h2>creating functions directly in the target</h2>
+<div id="creating-functions-directly-in-the-target" class="section level4">
+<h4>creating functions directly in the target</h4>
 <ul>
 <li>use <code>{}</code> to write inline functions</li>
 </ul>
 </div>
-<div id="removing-specific-objects" class="section level2">
-<h2>removing specific objects</h2>
+<div id="removing-specific-objects" class="section level4">
+<h4>removing specific objects</h4>
 <ul>
 <li>tar_delete</li>
 </ul>
 </div>
-<div id="efficiency-gains" class="section level2">
-<h2>Efficiency gains</h2>
+<div id="efficiency-gains" class="section level4">
+<h4>Efficiency gains</h4>
 <ul>
 <li>only runs what changes</li>
 </ul>
 </div>
-<div id="tool-for-organizing-thoughts" class="section level2">
-<h2>tool for organizing thoughts</h2>
+<div id="tool-for-organizing-thoughts" class="section level4">
+<h4>tool for organizing thoughts</h4>
 <ul>
 <li>don’t be afraid to delete unnecessary components from template</li>
 </ul>
 </div>
-<div id="tar_make" class="section level2">
-<h2>tar_make</h2>
+<div id="tar_make" class="section level4">
+<h4>tar_make</h4>
 <p>?? how to run specific targets?</p>
 </div>
-<div id="fnmate" class="section level2">
-<h2>fnmate</h2>
+<div id="fnmate" class="section level4">
+<h4>fnmate</h4>
 <ul>
 <li>shortcut for generating functions</li>
 </ul>
 </div>
-<div id="organization-practices" class="section level2">
-<h2>Organization practices</h2>
+<div id="organization-practices" class="section level4">
+<h4>Organization practices</h4>
 <ul>
 <li>targets are nouns</li>
 <li>functions are verbs</li>
@@ -531,40 +530,40 @@ concise</li>
 <p>modified keyboard shortcuts &gt;&gt; assign shortcuts with fnmate,
 tflow, and targets</p>
 </div>
-<div id="targets-is-a-session-first-framework" class="section level2">
-<h2>targets is a session first framework</h2>
+<div id="targets-is-a-session-first-framework" class="section level4">
+<h4>targets is a session first framework</h4>
 <ul>
 <li>each targets run creates a new R session</li>
 </ul>
 </div>
-<div id="debugging" class="section level2">
-<h2>debugging?</h2>
+<div id="debugging" class="section level4">
+<h4>debugging?</h4>
 </div>
-<div id="nys-covid-example" class="section level2">
-<h2>NYS Covid example</h2>
+<div id="nys-covid-example" class="section level4">
+<h4>NYS Covid example</h4>
 <ul>
 <li>does lots of stuff</li>
 <li>lots of lines of code</li>
 <li></li>
 </ul>
 </div>
-<div id="when-should-you-use-targets" class="section level2">
-<h2>When should you use targets?</h2>
+<div id="when-should-you-use-targets" class="section level4">
+<h4>When should you use targets?</h4>
 <ul>
 <li>good for anything bigger than a single script</li>
 <li>a pain to port from script – so chose early</li>
 </ul>
 </div>
-<div id="challenges" class="section level2">
-<h2>Challenges</h2>
+<div id="challenges" class="section level4">
+<h4>Challenges</h4>
 <ul>
 <li>generally don’t push <code>_targets</code> folder - can do it for
 small objects</li>
 <li>targets online storage</li>
 </ul>
 </div>
-<div id="documentation" class="section level2">
-<h2>documentation</h2>
+<div id="documentation" class="section level4">
+<h4>documentation</h4>
 <ul>
 <li>great documentation</li>
 <li>nyr talk</li>
@@ -573,8 +572,8 @@ small objects</li>
 <li>reprotemplate</li>
 </ul>
 </div>
-<div id="r-file-with-all-functions" class="section level2">
-<h2>R file with all functions</h2>
+<div id="r-file-with-all-functions" class="section level4">
+<h4>R file with all functions</h4>
 <ul>
 <li>how do you recommend parsing functions vs inline functions</li>
 <li>default to single function per file</li>
@@ -582,8 +581,8 @@ small objects</li>
 <li>granularity helps with git</li>
 </ul>
 </div>
-<div id="parallelizing-targets" class="section level2">
-<h2>parallelizing targets?</h2>
+<div id="parallelizing-targets" class="section level4">
+<h4>parallelizing targets?</h4>
 <ul>
 <li>two parts -
 <ol style="list-style-type: decimal">
@@ -596,19 +595,112 @@ the same function</li>
 </ol></li>
 </ul>
 </div>
-<div id="targets-chapter" class="section level1">
-<h1>Targets chapter</h1>
+</div>
+<div id="targets-chapter" class="section level3">
+<h3>Targets chapter</h3>
 <p>Very bare bones - links to talk and resources mentioned in talk</p>
 </div>
-<div id="targets-intro-videos-debugging" class="section level1">
-<h1>Targets intro videos – debugging</h1>
+<div id="targets-intro-videos-debugging" class="section level3">
+<h3>Targets intro videos – debugging</h3>
 <ul>
-<li>Focus on environment browser</li>
+<li><p>Focus on environment browser</p></li>
+<li><p>Just debugging in R</p>
+<ul>
+<li>Use traceback to find errors</li>
+<li>Use debug(<em>FUNCTION</em>) &gt;&gt; run FUNCTION(X)
+<ul>
+<li>opens a browser window</li>
+</ul></li>
+</ul></li>
 </ul>
-<p>–&gt;</p>
+<div id="targets-1" class="section level4">
+<h4>Targets</h4>
 <ul>
+<li><p>get error fromt targets</p></li>
+<li><p><code>tar_make()</code> breaks at some point</p></li>
+<li><p>check link in manual – <a href="https://books.ropensci.org/targets/debugging.html" class="uri">https://books.ropensci.org/targets/debugging.html</a></p></li>
+<li><p>use <code>tar_meta(fields = &quot;error&quot;)</code></p>
+<ul>
+<li>shows error message for target</li>
+</ul></li>
+</ul>
+</div>
+<div id="environment-browser" class="section level4">
+<h4>environment browser</h4>
+<ul>
+<li>restart session</li>
+<li>load functions and <code>library(targets)</code></li>
+<li>debug(FUNCTION FROM TARGET) &gt;&gt; not debugging target directly
+<ul>
+<li><code>tar_make(names = BROKEN_TARGET, callr_function = NULL)</code>
+<ul>
+<li>this results in a normal browser window – targets runs as a
+background process so we need to bring it to the forefront</li>
+<li></li>
+</ul></li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="targets-external-files" class="section level3">
+<h3>Targets External Files</h3>
+<ul>
+<li>targettopia – tidyverse for targets</li>
+<li>for rmarkdown reports - most calls should be calls to tar_read and
+tar_load</li>
+<li>use targets to create all computations - use rmd to explain
+them</li>
+</ul>
+<div id="external-files" class="section level4">
+<h4>External files</h4>
+<p>fs::dir_tree(“_targets”) &gt;&gt;&gt; shows file structure</p>
+<ul>
+<li>need to create a target that returns a path</li>
+<li>using an external target as an outputs -
+<ul>
+<li>saves file and outputs a path
+<ul>
+<li>invisible(PATH) - trying to get a side effect (saving file)</li>
+</ul></li>
+</ul></li>
+</ul>
+</div>
+<div id="tarchetypes" class="section level4">
+<h4>tarchetypes</h4>
+<ul>
+<li>use <code>tar_render</code>
+<ul>
+<li>name, report, options for rmarkdown render</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="workflow-talk" class="section level3">
+<h3>Workflow Talk</h3>
+<ul>
+<li>get in the pocket</li>
+<li>whats the priority?
+<ul>
+<li>can’t write a unit test for methodology = prioritize making things
+clear and key decision points</li>
+</ul></li>
+</ul>
+<div id="notebooks" class="section level4">
+<h4>notebooks</h4>
+<ul>
+<li>great - but slow and have tensions between code and text</li>
+</ul>
+</div>
+<div id="domain-specific-folder-structures" class="section level4">
+<h4>Domain specific Folder Structures</h4>
+<ul>
+<li><code>workflowr</code>, <code>represtools</code> – packages that
+save you a lot of book keeping and decisions about structure</li>
+<li>Anytime in a domain mismatch</li>
+<li></li>
 <li></li>
 </ul>
+</div>
 </div>
 
 

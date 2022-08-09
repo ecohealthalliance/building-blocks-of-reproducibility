@@ -4,7 +4,7 @@ subtitle: "Part 2: Version control and collabortaion<br>with GIT and Github"
 author: "Collin Schwantes"
 date: "2022-06-14"
 output:
-  ehastyle::eha_avenir_
+  ehastyle::eha_avenir_xar
 editor_options: 
   markdown: 
     wrap: 72
