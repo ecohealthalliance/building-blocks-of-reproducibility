@@ -1,7 +1,7 @@
 ---
-title: "Targets for Reproducibility"
+title: "Reproducible workflows with `targets`"
 author: "Collin Schwantes"
-date: "2022-08-08"
+date: "2022-08-09"
 output:
   ehastyle::eha_avenir_xar
 editor_options: 
@@ -52,7 +52,7 @@ library(igraph)
 - Targets is an R package that makes analysis workflows more reproducible
 - Create a set of steps and execute them. Targets figures out dependencies between steps. 
 - Outputs are stored and only re-written if something changes 
--  See Noam's talk
+-  [See Noam's talk](https://airtable.com/appwlxIzmQx5njRtQ/tbledVCO9MRKkK9MW/viwgVEpgZnmyrILmZ/recNumz1XdgbOtuaQ?blocks=hide)
 
 ---
 # Targets and reproducibility
@@ -76,9 +76,9 @@ class: left, left
 
 # Why use targets
 
-1) It saves you time during complicated analyses  
-2) It saves you time during project setup - project structure is predefined  
-3) It helps you organize your code  
+1. It saves you time during complicated analyses
+2. It saves you time during project setup - project structure is predefined  
+3. It helps you organize your code  
 
 ---
 
@@ -105,6 +105,9 @@ tflow::use_tflow()
 └── targets_example.Rproj
 ```
 
+???
+
+Going to create a workflow to validate some bat data - this example is extremely simple but should show enough of the features of targets to get you rolling. 
 ---
 # Layout workflow in _targets.R
 
@@ -207,15 +210,22 @@ Show dir_tree in example
 
 # Targets and Github
 - Be mindful of whats in your _targets folder
-- 
+  - consider if targets need to be encrypted
+  - consider if `_targets/` should be ignored
+- Targets and git/github generally work well together
 
 ---
-# 
+# Take aways
 
+1. Targets is a flexible framework that improves efficiency/organization on complicated projects  
+2. Targets may be overkill for analyses/processes that can be accomplished in a single script  
+3. Targets fits well into our guiding principles of reproducibility and steers us towards more reproducible workflows  
+ 
 ---
 class: center, middle
 #Thanks!
 
+---
 # Branching
 
 Static branching
