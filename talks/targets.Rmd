@@ -154,6 +154,12 @@ bat_data <- tar_plan(
 
 ???
 
+dir.create("data")
+
+https://raw.githubusercontent.com/ecohealthalliance/building-blocks-of-reproducibility/feature/targets/data/bat_data.csv?token=GHSAT0AAAAAABQSZJTCM5IYZFXFN6C5OCBGYXSRVMA
+
+tar_cue
+
 Ask Noam/Nathan how they deal with this
 ---
 
@@ -187,13 +193,15 @@ Show dir_tree in example
 ---
 
 # Debugging
-- Visualize targets graph
-- traceback(), debug(function) and undebug(function) from base R
 - `tar_meta(fields = "error")`
-- `debug(BROKEN_FUNCTION)`
-- `tar_make(names = BROKEN_TARGET, callr_function = NULL)`
-  - opens a browser window at the function
-  you're debugging
+- Visualize targets graph
+- traceback(), debug(function) and undebug(function) from base R -- don't really work with `targets`
+- load functions
+- `targets::tar_option_set(debug = "broken_target")`
+
+- `tar_make(names = BROKEN_TARGET, callr_function = NULL, shortcut = T)`
+  - `debug(break_target)`
+  - press `c` to enter the function window
 
 ---
 
@@ -202,6 +210,11 @@ Show dir_tree in example
 - 
 
 ---
+# 
+
+---
+class: center, middle
+#Thanks!
 
 # Branching
 
