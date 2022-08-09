@@ -2,9 +2,12 @@
 title: "Targets for Reproducibility"
 author: "Collin Schwantes"
 date: "2022-08-08"
-output: html_document
+output:
+  ehastyle::eha_avenir_xar
+editor_options: 
+  markdown: 
+    wrap: 72
 ---
-## 
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
@@ -17,7 +20,7 @@ library(dplyr)
 library(igraph)
 ```
 
-## Review from previous talks
+# Review from previous talks
 
 **Reproducibility** is the ability to re-create results from the same data and code
 
@@ -27,20 +30,97 @@ library(igraph)
 4)  Keep your code organized (avoid spaghetti code)  
 5)  Leave yourself notes (literate programming) 
 6)  Use a version control system
+---
+# Briefest Review of Targets
 
-## Briefest Review of Targets
 - Aim is to make analysis workflows more reproducible
 - Create a set of steps and execute them
-- targets = nouns and functions = verbs
+  - targets = nouns and functions = verbs
 - Outputs are stored and only re-written if something changes 
 -  See Noam's talk
+---
 
-## Targets and reproducibility
+# Targets and reproducibility
 
-- Targets allows us to follow the spirit of saving source while keeping some components of our session
+- Allows us to follow the spirit of a source first workflow while keeping some components of our session 
+  - each time you run `tar_make` its run in a fresh environment BUT any objects that haven't changed will be loaded. 
 - Provides a common structure for projects
   - Functions in an /R folder, packages.R, and _targets.R
 - Reduces the amount of documentation needed to execute the code 
-  
+---
 
+# Initiating Targets 
+
+- Use `tflow::use_tflow()` to setup a minimalist and ergonomic targets workspace
+
+```
+remotes::install_github("milesmcbain/tflow")
+
+tflow::use_tflow()
+
+.
+├── R
+├── _targets.R
+├── packages.R
+└── targets_example.Rproj
+```
+---
+# Layout workflow in _targets.R
+
+```
+## Load your packages, e.g. library(targets).
+source("./packages.R")
+
+## Load your R files
+lapply(list.files("./R", full.names = TRUE), source)
+
+## load data
+bat_data <-  tar_plan(
+
+)
+
+## validate data
+bat_validation <-  tar_plan(
+
+)
+
+## plot data
+bat_plot <- tar_plan(
+
+)
+
+## make report
+
+bat_report <- tar_plan(
+  tarchetypes::tar_render(...)
+)
+
+
+```
+---
+
+
+# Loading data 
+- Straight forward with local data
+- More complicated with [cloud hosted data](https://airtable.com/apps4rtLTXjRQHIvY/tblArZCjsYtZr2LEh/viwcs3ZSXjugmPk7v?blocks=hide)
+
+```
+csv_bat_data <- tar_plan(
+  targets::tar_target(bat_data_file, "bat_data.csv",format = "file),
+  targets::tar_target(bat_data,read.csv(bat_data_file)
+)
+
+
+## will targets to be able to detect changes in the data on airtable?
+
+airtable_bat_data <- tar_plan(
+  targets::tar_target(bat_data_table, get_bat_data(base = "apps4rtLTXjRQHIvY", table = "bats"))
+)
+```
+
+???
+
+Ask Noam/Nathan how they deal with this
+
+# 
 
