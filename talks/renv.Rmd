@@ -1,5 +1,6 @@
 ---
-title: "Building Blocks of Reproducibility: renv"
+title: "Building Blocks of Reproducibility:"
+subtitle: "`renv` - It works on my machine"
 author: "Collin Schwantes"
 date: "`r Sys.Date()`"
 output:
@@ -27,6 +28,9 @@ class: center, middle
 
 How many packages do you use in your projects?
 
+???
+
+Those six principles would be sufficient if you were writing all the code in your project. 
 
 ---
 
@@ -39,6 +43,7 @@ How do you create reproducible workflows when MOST of the code in your project c
 # Solution `renv`
 
 - Simple and powerful package management system
+-  Can be implemented quickly
 - Allows you to create local project specific package libraries
 - Allows you to share specific packages used with collaborators
 
@@ -50,7 +55,8 @@ How do you create reproducible workflows when MOST of the code in your project c
 1. System libraries  
 2. System dependencies  
 3. R version  
-
+4. Operating system
+5. etc.
 
 ???
 
@@ -64,7 +70,7 @@ renv::init() #setup renv infrastructure in your project
 ```
 - Work on code, install packages
 ``` 
-renv::snapshopt() # record the package versions at that point in time >> save
+renv::snapshot() # record the package versions at that point in time >> save
 ```
 - What did I do?
 ```
@@ -86,7 +92,7 @@ renv::restore() # restore packages from lock.file >> load
 | `renv.lock`         | *The lockfile, describing the state of your project's library at some point in time. |
 | `renv/activate.R`   | The activation script run by the project `.Rprofile`.                               |
 | `renv/library`      | The private project library.                                                        |
-| `renv/settings.dcf` | Project settings -- see `?settings` for more details.                               |
+| `renv/settings.dcf` | *Project settings -- see `?settings` for more details.                               |
 
 *files you will likely interact with
 
@@ -98,10 +104,17 @@ creates files and folders necessary to capture package dependencies.
 # How do I collaborate with `renv`?
 
 - Use git/github as version control - `renv` will ignore any package dependencies declared in files listed in `.gitignore` 
-- Whoever creates the project runs `renv::init()` followed by
-`renv::snapshot()` and pushes the renv files to github
-- Figure out how you want to manage the `lock.file` 
+- The team figures out how you want to manage the `lock.file` 
+- The project creator runs `renv::init()` and pushes the renv files to github
 - Collaborators pull down files and use `renv::restore()` to install the specific  package versions on their machines and `renv::snapshot()` to update the `lock.file` then push changes to github
+
+???
+
+Renv plays very nicely with git and github - it will even ignore an packages listed in files in the .gitignore file. 
+
+Before you start using renv on a large collaborative project, figure out how your team will manage the renv.lockfile and add that to your project readme/documentation. Generally speaking, the lockfile can be treated like any other git backed file. Making frequent and targeted commits and regular merges will help ensure the lockfiles between branches to become horribly out of sync. 
+
+- From there its pretty straighforward- the project creator runs renv init and pushes the files up to github, and collaborators pull down those files, modify them, and push changes. 
 
 ---
 # What if my collaborators use Windows? 
@@ -126,6 +139,9 @@ RENV_DOWNLOAD_METHOD = "libcurl" # or wininet
 - `renv::install("ecohealthalliance/airtabler")`
 - `renv::snapshot()`
 - git push
+- `renv::history()`
+- `renv::revert()`
+- `renv::clean()`
 
 ---
 
@@ -144,6 +160,8 @@ RENV_DOWNLOAD_METHOD = "libcurl" # or wininet
 Your code is potentially a small part of the code base that makes up your project. Capturing software dependencies will go a long ways towards making your code more reproducible. 
 
 Renv is a good tool for recording R package versions. It has multiple levels of depth - from a "set it and forget" basic workflow to more granular package management specifications via settings and profiles. 
+
+Using renv will largely prevent the common scenarios of "it runs on my machine" and "oh no! my old code won't run because of package versions" - you can and should start using it on all your projects. 
 
 
 ---
