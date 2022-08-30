@@ -32,7 +32,7 @@ Can a few people share the issues that they ran into?
 These are all problems with reproducibility. Today we are going to stick
 to the basics like using relative paths and project based workflows, but
 eventually this series of talks will get arrive at capturing computer
-environments and packing code for more complete reproducibility.
+environments and packaging code for more complete reproducibility.
 
 ---
 class: center, middle

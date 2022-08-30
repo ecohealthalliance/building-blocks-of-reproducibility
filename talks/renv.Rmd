@@ -11,7 +11,7 @@ output:
 **Reproducibility** is the ability to re-create results from the same data and code
 
 1)  Use an IDE like Rstudio   
-2)  Always start from a blank slate (save source not sessions)
+2)  Always start from a blank slate (save source not sessions)  
 3)  Use projects and relative paths  
 4)  Keep your code organized (avoid spaghetti code)  
 5)  Leave yourself notes (literate programming)  
@@ -22,12 +22,11 @@ In the context of reproducible research software, reproducibility is the ability
 
 
 ---
-
+class: center, middle
 # But wait
 
 How many packages do you use in your projects?
 
-???
 
 ---
 
@@ -98,9 +97,10 @@ creates files and folders necessary to capture package dependencies.
 
 # How do I collaborate with `renv`?
 
-- Use git/github as version control - `renv` will ignore any package dependencies declared in `.gitignore`'d locations
+- Use git/github as version control - `renv` will ignore any package dependencies declared in files listed in `.gitignore` 
 - Whoever creates the project runs `renv::init()` followed by
 `renv::snapshot()` and pushes the renv files to github
+- Figure out how you want to manage the `lock.file` 
 - Collaborators pull down files and use `renv::restore()` to install the specific  package versions on their machines and `renv::snapshot()` to update the `lock.file` then push changes to github
 
 ---
@@ -111,8 +111,49 @@ creates files and folders necessary to capture package dependencies.
 ```{r eval=FALSE}
 # in the console
 usethis::edit_renviron() 
-# in the .Renviron file set - don't forget the trailing return
+# in the .Renviron file set RENV_DOWNLOAD_METHOD - don't forget the trailing return
 RENV_DOWNLOAD_METHOD = "libcurl" # or wininet
 
 ```
 - If need be, you can setup a separate "windows" .Rprofile and use `renv::activate(profile = "windows")`
+
+---
+
+# Quick example
+
+- create branch in [targets talk](https://github.com/ecohealthalliance/example_targets_bbr)
+- `renv::init()`
+- `renv::install("ecohealthalliance/airtabler")`
+- `renv::snapshot()`
+- git push
+
+---
+
+# Where did we land?
+
+1)  Use an IDE like Rstudio   
+2)  Always start from a blank slate (save source not sessions)
+3)  Use projects and relative paths  
+4)  Keep your code organized (avoid spaghetti code)  
+5)  Leave yourself notes (literate programming)  
+6)  Use a version control system  
+7)  Use tools to capture your compute environment
+
+???
+
+Your code is potentially a small part of the code base that makes up your project. Capturing software dependencies will go a long ways towards making your code more reproducible. 
+
+Renv is a good tool for recording R package versions. It has multiple levels of depth - from a "set it and forget" basic workflow to more granular package management specifications via settings and profiles. 
+
+
+---
+
+# Questions?
+
+--- 
+
+# Resources
+
+- [`renv` Tutorials](https://rstudio.github.io/renv/articles/)
+- [Noam's `renv` talk](https://airtable.com/appwlxIzmQx5njRtQ/tbledVCO9MRKkK9MW/viwfFq11zdwCbBT83/recFn7sg9rEiHC5gV?blocks=hide)
+- [`renv` Talk from package Creator](https://www.youtube.com/watch?v=yjlEbIDevOs)
