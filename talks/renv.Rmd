@@ -77,7 +77,8 @@ renv::snapshot() # record the package versions at that point in time >> save
 renv::status() # check which packages have been added or modified
 ```
 
-- Oops - I want to go back 
+- Lockfile was updated or I've just pulled
+the project down from Github
 ```
 renv::restore() # restore packages from lock.file >> load
 ```
@@ -148,7 +149,7 @@ RENV_DOWNLOAD_METHOD = "libcurl" # or wininet
 # Where did we land?
 
 1)  Use an IDE like Rstudio   
-2)  Always start from a blank slate (save source not sessions)
+2)  Always start from a blank slate (save source not sessions)  
 3)  Use projects and relative paths  
 4)  Keep your code organized (avoid spaghetti code)  
 5)  Leave yourself notes (literate programming)  
