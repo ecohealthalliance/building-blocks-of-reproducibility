@@ -29,72 +29,70 @@ library(ehastyle)
 
 ## Overview of strategy
 
-- FAIR data products
+- This strategy was developed off the archetypal EHA project
+ that creates animal sampling (in Airtable) and human survey data (in ODK), and uses other data sets to inform statistical modeling done in R. 
+- Decouple publication of results from release of data and code
+- Over arching goal is to end projects with FAIR research outputs
 
-## Overview of Strategy
+## Overview of strategy: Guiding principles 
 
-- Data management plans
+- Data management plans change with the project
+- Digital and physical assets are properly managed
+- Published outputs can be found and interpreted by users outside the project
+   
 
-## Overview of Strategy
+## Overview of Strategy: Living data management plans
 
-- Asset management
+- The data management plan should serve as hub that records connections to different research outputs. 
+- Data management plans should facilitate end of project activities.
+  - Assets are described  
+  - Roles and responsibilities are delineated
+  - Standards and repositories are outlined
 
-## Overview of Strategy
+## Overview of Strategy: Asset Management
 
-- metadata - code and data
+- Where possible, services that are no longer needed should be shut down
+- Where possible, code running against cloud based data stores (airtable, odk, aws) should be run from version controlled data files. 
+- User access to services should be reviewed 
+- Physical items should be appropriately archived and documented (e.g. reagents, specimens, etc)
+  
+## Overview of Strategy: Code
 
-## Overview of Strategy
+- Use best practices for reproducible software
+  - self contained projects (rstudio projects)
+  - version controlled code (git and github)
+  - literate coding practices (in line documentation)
+  - dependency management (renv, docker)
+  - automated code runs (targets, docker)
+- Provide sufficient meta data about your project to give context and facilitate attribution
 
-- divorcing pbulication of results from publication of data and code
-- 
+## Overview of Strategy: Data
 
-## Overview of Strategy
+- - Outputs should conform to a standard 
+    - Default for data being frictionless data.
+  - Outputs should should have project level and item level metadata
+  - Outputs should contain or describe all necessary dependencies
 
-- Mechanics of process 
-- roles and responsbilities 
-## Slide to the Right 
+## Mechanics of process
 
-:::::: {.columns}
-::: {.column}
-Use `layout='Two Content', ph=officer::ph_location_right()` 
-to properly place content 
-:::
+- What are the criteria for initiating the close out process? Do all projects need to do this? 
 
-::: {.column}
+- roles and responsibilities 
 
-```{r righttable, layout='Two Content',ph=officer::ph_location_right()}
-head(cars,10)
-```
-:::
-::::::
+## Concrete Examples
 
-## Slide to the left 
+We say we are going to do the following in a DMP, what do we need to make this a reality?
 
-:::::: {.columns}
-::: {.column}
-```{r layout='Two Content', ph=officer::ph_location_left()}
-head(cars)
-```
-:::
+- Release version controlled reproducible code
+- Deposit sero-survey data in Zenodo
+- Deposit anonymized human survey data in Zenodo
+- Publish nucleotide sequence data to Genbank
+- Update data management plan with research outputs
 
-::: {.column}
-- Left side table
-:::
-::::::
+## Discussion
 
-##  Slide with SVG Plot
-
-```{r pressure}
-## use dml to make the plot an editable svg in ppt
-dml(plot(pressure))
-```
-
-## Slide with SVG Ggplot
-
-```{r }
-ggplotObj <- ggplot(mtcars, aes(wt, mpg), col = displ) +
-  geom_point()
-
-## pass a ggplot object to dml 
-dml(ggobj = ggplotObj)
-```
+- Accommodating schedules and approaches to when and how things are released - whats a reasonable timeline?
+- How might we handle project extensions or second phases of a project?
+- How should we close out assets? (airtable, aws, odk, etc.)
+- Where do we need support for this work? Training, infrastructure?
+- How might we handle data or assets that must remain private? 
