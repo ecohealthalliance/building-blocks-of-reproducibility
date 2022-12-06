@@ -24,7 +24,7 @@ library(ehastyle)
 
 - Provide an overview of planned strategy
 - Understand where plan might break down
-- Determine whats training or infrastructure is needed
+- Determine what training or infrastructure is needed
 
 
 ## Overview of strategy
@@ -75,9 +75,13 @@ library(ehastyle)
 
 ## Mechanics of process
 
-- What are the criteria for initiating the close out process? Do all projects need to do this? 
-
+- Criteria for initiating close out process: 
+What are the criteria for initiating the close out process? Do all projects need to do this? 
+- What is the definition of done? 
 - roles and responsibilities 
+
+??? 
+
 
 ## Concrete Examples
 
