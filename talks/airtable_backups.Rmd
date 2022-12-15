@@ -1,0 +1,131 @@
+---
+title: "Backing up Project AirTables"
+author: "Collin Schwantes"
+date: "`r Sys.Date()`"
+output:
+  ehastyle::eha_avenir_xar
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, fig.height=5, fig.align='center')
+```
+
+
+# Airtable and its internal backup system
+
+- Low code relational database with excel like interface
+  - see [Airtable chapter](https://ecohealthalliance.github.io/eha-ma-handbook/8-airtable.html) for an overview
+- Internal back up system already in place
+  - All data is stored on AWS infrastructure 
+  - Automatic and manual snapshots 
+  - Revision history is avialable
+  - Manually duplicate bases
+  - Manually export data as CSVs
+
+---
+
+# Why do we need to back up data outside airtable?
+
+* Frees you from dependency on Airtable
+
+* Increases redundancy
+
+* Allows you and collaborators to work from fixed data - including while offline
+
+* Prepares you for data archiving 
+    
+---
+
+# What needs to be in your base for this to work?
+
+* Metadata!
+
+* Descriptive metadata - who what where why when
+
+* Structural metadata - how are items related in your base
+
+---
+# Create a base with proper metadata
+
+* Duplicate template
+
+* Update values
+
+* See also [Field Manager tool](https://support.airtable.com/docs/field-manager-and-field-dependencies)
+
+
+
+---
+
+# Prepare to use Demo Base
+
+- [Example Base](https://airtable.com/appyyDpbscWX1hmEz/tbltRn4vo7iwjgksZ/viwkWkWn3xgxHKPyF?blocks=bipCn27IEgqM5vtEp)
+- [Get base ID](https://airtable.com/appyyDpbscWX1hmEz/api/docs)
+- [Create scoped tokens](https://airtable.com/create/tokens)
+
+---
+
+# Setup repo encryption
+
+- [Setup encryption](https://ecohealthalliance.github.io/eha-ma-handbook/16-encryption.html#set-up-encryption-for-a-repo-that-did-not-previously-use-git-crypt.)
+
+```
+# start git crypt
+git-crypt init
+
+# add your key to git crypt
+git-crypt add-gpg-user YOUR_KEY_HERE
+
+# create .attributes file - will tell git crypt what should be encrypted
+touch .attributes
+
+# open .attributes and add **/.env filter=git-crypt diff=git-crypt
+
+# create .env file
+touch .env
+# open .env then add AIRTABLE_API_KEY=YOUR_TOKEN 
+# make sure you leave an empty line at the end of the .env file
+
+```
+
+---
+# Code Walkthrough
+
+* renv::install("ecohealthalliance/airtabler")
+
+* renv::install("dotenv")  
+
+* see `R/airtable_backup_walkthrough`
+
+---
+
+# Save to Dropbox
+
+See [Dropbox auth example](https://github.com/ecohealthalliance/collinschwantes-misc/blob/main/drop_box_auth.R)
+
+    - *note* sometimes you need to prime the `auth` function with an empty file download before uploads will work
+
+```
+library(rdrop2)
+```
+---
+
+# Save to Google drive 
+
+See [Google Authorization and R chapter](https://ecohealthalliance.github.io/eha-ma-handbook/15-google-authorization-and-r.html)
+
+---
+
+# future directions
+
+* Pull down and link attachments
+
+* Use Airtable metadata api to generate structural metadata
+
+* Connect to `deposits` and `frictionless` packages to make archiving easier 
+
+---
+
+class: center, middle
+
+#Thanks!
