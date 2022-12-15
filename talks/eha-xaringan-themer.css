@@ -79,7 +79,7 @@ h1, h2, h3 {
 .remark-slide-content {
   background-color: var(--background-color);
   font-size: 1rem;
-  background-image: url(/Library/Frameworks/R.framework/Versions/4.2-arm64/Resources/library/ehastyle/eha_bg_16x9.png);
+  background-image: url(/Users/collinschwantes/Library/Caches/org.R-project.R/R/renv/cache/v5/R-4.2/aarch64-apple-darwin20/ehastyle/0.1.0/0af8f2b2e60de3c979294069a5ef05f0/ehastyle/eha_bg_16x9.png);
   background-size: cover;
   padding: 16px 64px 16px 64px;
   width: 100%;
@@ -142,7 +142,7 @@ a, a > code {
 }
 .title-slide {
   background-color: var(--title-slide-background-color);
-  background-image: url("/Library/Frameworks/R.framework/Versions/4.2-arm64/Resources/library/ehastyle/eha_title_16x9.png");
+  background-image: url("/Users/collinschwantes/Library/Caches/org.R-project.R/R/renv/cache/v5/R-4.2/aarch64-apple-darwin20/ehastyle/0.1.0/0af8f2b2e60de3c979294069a5ef05f0/ehastyle/eha_title_16x9.png");
   background-size: contain;
 }
 .title-slide .remark-slide-number {
