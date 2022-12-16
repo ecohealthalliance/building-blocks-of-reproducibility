@@ -67,7 +67,7 @@ knitr::opts_chunk$set(echo = TRUE, fig.height=5, fig.align='center')
 
 # Setup repo encryption
 
-- [Setup encryption](https://ecohealthalliance.github.io/eha-ma-handbook/16-encryption.html#set-up-encryption-for-a-repo-that-did-not-previously-use-git-crypt.)
+- [Setup encryption](https://ecohealthalliance.github.io/eha-ma-handbook/16-encryption.html#set-up-encryption-for-a-repo-that-did-not-previously-use-git-crypt.) 
 
 ```
 # start git crypt
