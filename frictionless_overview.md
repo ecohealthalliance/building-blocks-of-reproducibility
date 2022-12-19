@@ -1,32 +1,43 @@
-frictionless_overview
+Overview of frictionless data standard
 ================
 Collin Schwantes
 2022-12-19
 
-\#Overview of frictionless data standard
+## Summary
 
-Summary: The frictionless data standard is a general purpose structure
-for data that is designed to allow you to share data in a consistent
-format. Its designed to be simple and flexible while still meeting FAIR
-data standards. EHA has decided to use this as our default data standard
-for tabular data when a domain specific standard is not available.
+The [frictionless data standard](https://specs.frictionlessdata.io/) is
+a general purpose structure for data that is designed to allow you to
+share data in a consistent format. Its designed to be simple and
+flexible while still meeting FAIR data standards. EHA has decided to use
+this as our default data standard for tabular data when a domain
+specific standard is not available.
+
+![Example Data Package](img/frictionless_data_package.png)
+
+When working in R, we can use the
+[`frictionless R package`](https://docs.ropensci.org/frictionless/).
+Because the frictionless data standard leans heavily on json, the
+`frictionless R package` is built around manipulating lists.
 
 ### Key terms:
 
 [Tabular
 Data](https://specs.frictionlessdata.io/tabular-data-resource/) - Data
-represented as a table [FAIR
-Data](https://www.go-fair.org/fair-principles/) - Findable, accessible,
-interoperable and reusable data. [Data
+represented as a table  
+[FAIR Data](https://www.go-fair.org/fair-principles/) - Findable,
+accessible, interoperable and reusable data.  
+[Data
 Package](https://specs.frictionlessdata.io/#what%E2%80%99s-a-data-package) -
 a standard way of storing metadata and data that is human editable and
-machine readable [Table
+machine readable  
+[Table
 Schema](https://specs.frictionlessdata.io/table-schema/#language) -
-describes how your tabular data are structured.
+describes how your tabular data are structured.  
 [Types](https://specs.frictionlessdata.io/table-schema/#types-and-formats) -
 describes what kind of field is in the table using a controlled
-vocabular. Default is type string. See also [Rich
-Type](https://specs.frictionlessdata.io/table-schema/#rich-types)
+vocabular. Default is type string.  
+*See also [Rich
+Types](https://specs.frictionlessdata.io/table-schema/#rich-types)*
 
 ## Walk through with Airtable backup data
 
@@ -116,7 +127,8 @@ airtable_backup_schema$fields[[1]]$type  <- "uuid"
 
 Alternatively, you can create a schema on your own.
 
-# TODO how do airtable field types map to frictionless field types
+\[TODO - how do airtable/odk field types map to frictionless field
+types\]
 
 ``` r
 # create a new schema
@@ -214,12 +226,8 @@ frictionless::write_package(package = airtable_backup_package,directory = output
 
 Finally, validate your data package. The [validation
 tools](https://framework.frictionlessdata.io/docs/getting-started.html)
-are available in python and via the command line.
+are available in python and via the command line (CLI).
 
-``` r
-"outputs/d6006ad1ea537348a174da9aa4f186d2/people_table.csv"
-```
-
-    ## [1] "outputs/d6006ad1ea537348a174da9aa4f186d2/people_table.csv"
+CLI:
 
     frictionless validate outputs/d6006ad1ea537348a174da9aa4f186d2/people_table.csv
