@@ -1,6 +1,6 @@
 # This is poorly formatted code - use cmd+i to fix the indentation. 
 df_indent <- data.frame(a = 1:100,
-b="Some Text")
+                        b = "Some Text")
 
 # Click inside the function and use the tab button to see function arguments
 df_func <- data.frame(a = 1:10, row.names = FALSE,)
@@ -9,7 +9,7 @@ df_func <- data.frame(a = 1:10, row.names = FALSE,)
 commented <- function(x){sprintf("an example %s",x)}
 
 # Code linting - Rstudio automatically notices certain grave errors
-df <- data.frame(a = 1:10
+df <- data.frame(a = 1:10)
 
 # Use dashes to create code sections ----
 
@@ -20,3 +20,8 @@ df <- data.frame(a = 1:10
 "Quickly jump between sections"
 
 # What other Rstudio conveniences do you like? 
+
+# option to create a multi-cursor action
+
+# This is a section ####
+

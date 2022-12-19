@@ -21,7 +21,7 @@ knitr::opts_chunk$set(echo = TRUE,
 As scientists, reproducibility is the foundation of our work. Computers
 help with reproducibility because they are great a repetitive tasks and
 following instructions. However, a computer's ability to reproduce
-results is most often limited by the instructions provided by humans.
+results is most often limited by the instructions we provide.
   
 ???
 Show of hands - How many of you have had trouble getting old code or
@@ -32,7 +32,7 @@ Can a few people share the issues that they ran into?
 These are all problems with reproducibility. Today we are going to stick
 to the basics like using relative paths and project based workflows, but
 eventually this series of talks will get arrive at capturing computer
-environments and packing code for more complete reproducibility.
+environments and packaging code for more complete reproducibility.
 
 ---
 class: center, middle
@@ -50,7 +50,7 @@ class: center, middle
 
 
 ???
-This tablefrom the turing-way project lays out how we will discuss different types
+This table from the turing-way project lays out how we will discuss different types
 of results re-generation. These differ subtly from how the terms might
 be used in lab or field work. So to re-iterate - we are focusing on
 using the same code and same data to create the same result and calling
@@ -117,13 +117,13 @@ Open .R file for demo
 .pull-right[![Not restoring data](https://rstats.wtf/img/rstudio-workspace.png)]
 
 ???
- Each time you open up Rstudio, it should be with a blank slate. That way, you know what is loaded; how data, objects, or functions were created; and you'll have a better iadea of how to address issues if something goes wrong. If items have to be shuttled between sessions in order for your analysis to run, your workflow will be extremely difficult to reproduce and could irreparably break if you accidentally overwrite or delete that precious object.
+ Each time you open up Rstudio, it should be with a blank slate. That way, you know what is loaded; how data, objects, or functions were created; and you'll have a better idea of how to address issues if something goes wrong. If items have to be shuttled between sessions in order for your analysis to run, your workflow will be extremely difficult to reproduce and could irreparably break if you accidentally overwrite or delete that precious object.
 ---
 # Always start from a blank slate
 ### Save costly ouputs
 .pull-left[![my precious](https://www.meme-arsenal.com/memes/2cf77c3c32de9d23340c07d1c436d4b1.jpg)]
 
-.pull-right[Explicity store and read outputs that take a long time to create
+.pull-right[Explicitly store and read outputs that take a long time to create
 
 ```{r eval=FALSE, }
 
@@ -132,7 +132,7 @@ precious_sim <- computationally_expensive_simulation(
   iterations = 10^6
 )
 
-# Pick the appropriate formt to store it in
+# Pick the appropriate format to store it in
 saveRDS(precious_sim, 
         file = here::here("outputs","precious_sim.rds")
 )
@@ -183,17 +183,19 @@ write.csv(x = precious_obj,file =
 ]
 
 ???
+What do I mean when I say that code and data should be sourced? I mean that it should be intentionally saved and reloaded from outside your R session. 
+
 Use source code to define functions and create objects. This makes it much easier to recreate a workflow, pinpoint issues in code, and break code in workable chunks. 
-
---- 
-
+---
 # Always start from a blank slate
 ### Restart your session when you need to 
 
 Your R sessions should be dispensable - your code should be saved. 
 
 ???
-To restart your R session click Session > Restart R. This will get you back to essentially a blank slate. Any packages you had loaded will be unloaded, any items you stored in the session will be gone, and you will be free to work some section of the code.
+This is equivalent to the time on honored "Have you tried turning it off?" method for debugging. Sometimes the environment gets cluttered or something does not run correctly through no fault of yours. Being able to restart your session makes it possible to flip the "on and off" switch. 
+
+To restart your R session click Session > Restart R. This will get you back to essentially a blank slate. Any packages you had loaded will be unloaded, any items you stored in the session will be gone, and you will be able continue experimenting with your code knowing the underlying conditions are what you expect them to be. 
 
 Check in with audience
 
@@ -211,9 +213,10 @@ Benefits of projects:
 
 ???
 
-Rstudio - like most IDEs - uses the concept of a project. Projects are a collections of files, including your source code, that describe the computer environment, R settings, and where source code - your R or Rmd scripts - live.  
+Rstudio - like most IDEs - uses the concept of a project. Projects are a collections of files that describe the computer environment, R settings, and working directory - where your project lives in your computer.  
 
-Demo creating a new project from GUI
+Review bullets
+
 
 ---
 # Use projects and relative paths  
@@ -224,6 +227,10 @@ Demo creating a new project from GUI
 
 **Relative Path** = Location relative to current working directory where the file lives  
 - `outputs/precious_obj.csv`
+
+???
+
+Demo creating a new project from GUI and show how to use relative paths with getwd, dir.create, file.create, list.files
 
 ---
 # Use projects and relative paths  
@@ -243,7 +250,7 @@ Using  projects and relative paths gets you like 80% of the way to a reproducibl
 # Keep your code organized 
 .pull-left[
 - Use clear/common folder names 
-  - `R` for rscripts
+  - `R` for r scripts
 - Use clear file names
   - `R/ring_forging_functions.R`
 - Use clear object names 
@@ -290,7 +297,7 @@ Don't let priority effects govern your code base - think through the structure o
 #' 
 #' This function provides the volume of a torus ring.
 #'
-#' @param minor Numeric. radius of minor cirle
+#' @param minor Numeric. radius of minor circle
 #' @param major Numeric. radius of major circle
 #'
 #' @return volume of torus ring
@@ -321,4 +328,19 @@ shortcut - cmd+opt+shift+r
 ---
 class: center, middle
 
+
+![reproducibility matrix](`r here::here("img","reproducible-matrix.jpg")`)   
+
+
+???
+Using those five guiding principles, you should be able to give someone your code and data, and they should be able to reproduce your results. This ability to reproduce your work makes it more transparent and means that others can build on it - two hallmarks of good research
+
+---
+class: center, middle
+
 #Thanks!
+
+---
+class: center, middle
+
+#Questions?
