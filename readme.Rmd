@@ -8,6 +8,8 @@ output: github_document
 This repo contains a series of talks on reproducible workflows given as
 part of the M3 series at EHA. Talks will be written as RMD files and recordings will be available to people at EHA [here](https://airtable.com/appwlxIzmQx5njRtQ/tbledVCO9MRKkK9MW/viwd5Kt2QVw7lyAKb?blocks=hide). All presentations can be found in the "talks" folder.
 
+For more information about Data Management Plans see [this repo](https://github.com/ecohealthalliance/data-mgmt-plan) and the [EHA Modeling and Analytics Handbood](https://ecohealthalliance.github.io/eha-ma-handbook/index.html)
+
 The series will include talks on:
 
 - [x] [Fundamentals of reproducibility - making your code portable](https://airtable.com/appwlxIzmQx5njRtQ/tbledVCO9MRKkK9MW/viwFlSmwQVLydq9Ri/recZnmKU3g9AQXik9?blocks=hide)
