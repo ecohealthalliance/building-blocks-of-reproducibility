@@ -24,5 +24,7 @@ The series will include talks on:
   `targets`](https://airtable.com/appwlxIzmQx5njRtQ/tbledVCO9MRKkK9MW/viwFlSmwQVLydq9Ri/recLn3sCLesOsopqS?blocks=hide)
 - [x] [Package management with
   `renv`](https://airtable.com/appwlxIzmQx5njRtQ/tbledVCO9MRKkK9MW/viwFlSmwQVLydq9Ri/receDurRk5Rg1jWBt?blocks=hide)
-- Metadata and long term data archiving
-- Reproducing compute environments using containerization
+- [ ] Metadata and long term data archiving
+- [ ] A practical introduction to data standards
+- [ ] Reproducing compute environments using containerization
+
