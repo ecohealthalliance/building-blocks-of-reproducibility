@@ -15,7 +15,7 @@
  *    - xaringan wiki: https://github.com/yihui/xaringan/wiki
  *    - remarkjs wiki: https://github.com/gnab/remark/wiki
  *
- *  Version: 0.4.0
+ *  Version: 0.4.1
  *
  * ------------------------------------------------------- */
 @import url(https://font-avenir.s3.us-east-2.amazonaws.com/Avenir.css);
@@ -79,7 +79,7 @@ h1, h2, h3 {
 .remark-slide-content {
   background-color: var(--background-color);
   font-size: 1rem;
-  background-image: url(/Library/Frameworks/R.framework/Versions/4.1-arm64/Resources/library/ehastyle/eha_bg_16x9.png);
+  background-image: url(/Users/collinschwantes/Library/Caches/org.R-project.R/R/renv/cache/v5/R-4.2/aarch64-apple-darwin20/ehastyle/0.1.0/0af8f2b2e60de3c979294069a5ef05f0/ehastyle/eha_bg_16x9.png);
   background-size: cover;
   padding: 16px 64px 16px 64px;
   width: 100%;
@@ -142,7 +142,7 @@ a, a > code {
 }
 .title-slide {
   background-color: var(--title-slide-background-color);
-  background-image: url("/Library/Frameworks/R.framework/Versions/4.1-arm64/Resources/library/ehastyle/eha_title_16x9.png");
+  background-image: url("/Users/collinschwantes/Library/Caches/org.R-project.R/R/renv/cache/v5/R-4.2/aarch64-apple-darwin20/ehastyle/0.1.0/0af8f2b2e60de3c979294069a5ef05f0/ehastyle/eha_title_16x9.png");
   background-size: contain;
 }
 .title-slide .remark-slide-number {
@@ -215,6 +215,36 @@ table.dataTable.hover tbody tr:hover, table.dataTable.display tbody tr:hover {
 }
 .dataTables_wrapper .dataTables_paginate .paginate_button {
   color: var(--text-color) !important;
+}
+
+/* Horizontal alignment of code blocks */
+.remark-slide-content.left pre,
+.remark-slide-content.center pre,
+.remark-slide-content.right pre {
+  text-align: start;
+  width: max-content;
+  max-width: 100%;
+}
+.remark-slide-content.left pre,
+.remark-slide-content.right pre {
+  min-width: 50%;
+  min-width: min(40ch, 100%);
+}
+.remark-slide-content.center pre {
+  min-width: 66%;
+  min-width: min(50ch, 100%);
+}
+.remark-slide-content.left pre {
+  margin-left: unset;
+  margin-right: auto;
+}
+.remark-slide-content.center pre {
+  margin-left: auto;
+  margin-right: auto;
+}
+.remark-slide-content.right pre {
+  margin-left: auto;
+  margin-right: unset;
 }
 
 /* Slide Header Background for h1 elements */

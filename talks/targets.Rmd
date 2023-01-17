@@ -1,0 +1,234 @@
+---
+title: "Reproducible workflows with `targets`"
+author: "Collin Schwantes"
+date: "2022-08-09"
+output:
+  ehastyle::eha_avenir_xar
+editor_options: 
+  markdown: 
+    wrap: 72
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+# library(officedown)
+library(ggplot2)
+# library(rvg)
+library(ggraph)
+library(ehastyle)
+library(dplyr)
+library(igraph)
+```
+
+# Review from previous talks
+
+**Reproducibility** is the ability to re-create results from the same data and code
+
+1)  Use an IDE like Rstudio   
+2)  Always start from a blank slate (save source not sessions)  
+3)  Use projects and relative paths  
+4)  Keep your code organized (avoid spaghetti code)  
+5)  Leave yourself notes (literate programming)  
+6)  Use a version control system  
+---
+
+# Today's talk
+
+- What is targets
+- Why should I care?
+- How does it fit into our reproducibility framework
+- Who's already using targets?
+- Demo - setting up a project with targets
+  - init
+  - creating targets
+  - targets and RMD
+  - debugging targets
+  - targets and github
+
+---
+
+# Briefest Review of Targets
+
+- Targets is an R package that makes analysis workflows more reproducible
+- Create a set of steps and execute them. Targets figures out dependencies between steps. 
+- Outputs are stored and only re-written if something changes 
+-  [See Noam's talk](https://airtable.com/appwlxIzmQx5njRtQ/tbledVCO9MRKkK9MW/viwgVEpgZnmyrILmZ/recNumz1XdgbOtuaQ?blocks=hide)
+
+---
+# Targets and reproducibility
+
+- Always starts from a blank slate
+  - each time you run `tar_make` its run in a fresh environment BUT any objects that haven't changed will be loaded. 
+- Provides a common structure for projects
+  - Functions in an /R folder, packages.R, and _targets.R
+- Documentation becomes easier to write because everything fits together in a specific way. 
+
+???
+
+2)  Always start from a blank slate (save source not sessions)  
+3)  Use projects and relative paths  
+4)  Keep your code organized (avoid spaghetti code)  
+5)  Leave yourself notes (literate programming)  
+
+
+---
+class: left, left
+
+# Why use targets
+
+1. It saves you time during complicated analyses
+2. It saves you time during project setup - project structure is predefined  
+3. It helps you organize your code  
+
+---
+
+# Where is `targets` being used at EHA?
+- [Automated Data Quality Control for Nipah Bangladesh](https://github.com/ecohealthalliance/nipah-bangladesh-automation/blob/main/_targets.R)
+- [Computationally Expensive Model Builds for DTRA-ML](https://github.com/ecohealthalliance/dtra-ml/blob/main/_targets.R)
+- Others?
+
+---
+
+# Initiating Targets 
+- Helpful packages: `tflow`,`tarchetypes`, `usethis`, `fnmate`
+- Use `tflow::use_tflow()` to setup a minimalist and ergonomic targets workspace
+
+```
+remotes::install_github("milesmcbain/tflow")
+
+tflow::use_tflow()
+
+.
+├── R
+├── _targets.R
+├── packages.R
+└── targets_example.Rproj
+```
+
+???
+
+Going to create a workflow to validate some bat data - this example is extremely simple but should show enough of the features of targets to get you rolling. 
+---
+# Layout workflow in _targets.R
+
+```
+## Load your packages, e.g. library(targets).
+source("./packages.R")
+
+## Load your R files
+lapply(list.files("./R", full.names = TRUE), source)
+
+## load data
+bat_data <-  tar_plan(
+
+)
+
+## validate data
+bat_validation <-  tar_plan(
+
+)
+
+
+## make report
+
+bat_report <- tar_plan(
+  tarchetypes::tar_render(...)
+)
+
+```
+
+---
+
+# Loading data 
+- Straight forward with local data
+- More complicated with [cloud hosted data](https://airtable.com/apps4rtLTXjRQHIvY/tblArZCjsYtZr2LEh/viwcs3ZSXjugmPk7v?blocks=hide)
+
+```
+bat_data <- tar_plan(
+  targets::tar_target(bat_data_file, "bat_data.csv",format = "file"),
+  targets::tar_target(bat_data,read.csv(bat_data_file))
+
+
+## will targets to be able to detect changes in the data on airtable?
+
+  targets::tar_target(bat_data_airtable, get_bat_data(base = "apps4rtLTXjRQHIvY", table = "bats"))
+)
+```
+
+???
+
+dir.create("data")
+
+https://raw.githubusercontent.com/ecohealthalliance/building-blocks-of-reproducibility/feature/targets/data/bat_data.csv?token=GHSAT0AAAAAABQSZJTCM5IYZFXFN6C5OCBGYXSRVMA
+
+tar_cue
+
+Ask Noam/Nathan how they deal with this
+---
+
+# Validating data
+- usethis::use_r("validate_bat_data")
+
+```
+## validate data
+bat_validation <-  tar_plan(
+  targets::tar_target(validated_data, validate_bat_data(airtable_bat_data, csv_bat_data)
+  )
+)
+```
+
+---
+
+# Creating RMD reports/dashboards
+- Use `tarchetypes::tar_render`
+- Use calls to `targets::tar_read()` to load objects in rmd
+
+```
+## make report
+
+bat_report <- tar_plan(
+  tarchetypes::tar_render(bat_validation_report,"reports/bat_validation")
+)
+```
+???
+
+Show dir_tree in example
+---
+
+# Debugging
+- `tar_meta(fields = "error")`
+- Visualize targets graph
+- traceback(), debug(function) and undebug(function) from base R -- don't really work with `targets`
+- load functions
+- `targets::tar_option_set(debug = "broken_target")`
+
+- `tar_make(names = BROKEN_TARGET, callr_function = NULL, shortcut = T)`
+  - `debug(break_target)`
+  - press `c` to enter the function window
+
+---
+
+# Targets and Github
+- Be mindful of whats in your _targets folder
+  - consider if targets need to be encrypted
+  - consider if `_targets/` should be ignored
+- Targets and git/github generally work well together
+
+---
+# Take aways
+
+1. Targets is a flexible framework that improves efficiency/organization on complicated projects  
+2. Targets may be overkill for analyses/processes that can be accomplished in a single script  
+3. Targets fits well into our guiding principles of reproducibility and steers us towards more reproducible workflows  
+ 
+---
+class: center, middle
+#Thanks!
+
+---
+# Branching
+
+Static branching
+Dynamic branching
+
+

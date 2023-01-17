@@ -1,0 +1,230 @@
+---
+title: "EHA Targets Materials"
+author: "Collin Schwantes"
+date: "2022-08-05"
+output: html_document
+---
+
+### Targets talk from Noam
+
+- aim to to make analysis workflow more reproducible
+- want to be able to build on our work
+  - reuse code for a different dataset
+  - return to a code base in 2 years 
+
+####  Reproducibility 
+
+- Workflow >> Targets
+- Environment
+- Versioning
+- Testing
+- Access 
+- Documentation
+
+#### Targets
+- standard project structure
+- reduces documentation --- closer to self documentation
+- testing can be captured in targets 
+
+#### Demo 
+- https://github.com/ecohealthalliance/targets-example
+- Create a set of steps
+- Targets tracks those steps, the inputs, and the outputs
+- tar_script - generates targets files
+- R - scripts that contain functions
+- packages.R - common place for listing packages used
+
+#### should this be encrypted?
+_targets >> files that save R objects
+
+#### _targets.R  
+- source packages and functions
+- tar_plan- groups of targets 
+
+#### target
+- name
+- function
+```
+ # roxygen tags
+ 
+ name <- function(variables){
+  #
+  variables
+  }
+```
+
+>> best practices for fetching data?
+
+#### Targets network
+- A -> B -> C
+- tar_make() >> builds everything OR doesnt if nothing is outdated
+
+#### tar_destroy
+- removes old targets objects
+
+#### tar_visnetwork
+- lays out your project
+- triangles = functions or objects
+- circles = targets
+
+#### Does order matter?
+- No
+- NOT procedural 
+
+#### making a report
+- tar_load(some_target) >>> loads target into environment
+- tar_read(some_target) >>> reads and assigns to an object
+
+Using either in an rmd adds rmd to _targets network? 
+
+#### can you add metadata to objects?
+- Nope
+- but you can get metadata from tar_meta()
+
+#### creating functions directly in the target
+
+- use `{}` to write inline functions
+
+#### removing specific objects
+- tar_delete
+
+#### Efficiency gains
+- only runs what changes
+
+#### tool for organizing thoughts
+- don't be afraid to delete unnecessary components from template
+
+#### tar_make 
+?? how to run specific targets?
+
+#### fnmate
+- shortcut for generating functions
+
+#### Organization practices
+
+- targets are nouns
+- functions are verbs 
+- make your functions descriptive -- doesnt have to be super concise
+
+modified keyboard shortcuts >> assign shortcuts with fnmate, tflow, and targets
+
+
+#### targets is a session first framework
+- each targets run creates a new R session
+
+#### debugging?
+
+#### NYS Covid example
+- does lots of stuff
+- lots of lines of code
+- 
+
+#### When should you use targets?
+- good for anything bigger than a single script
+- a pain to port from script -- so chose early
+
+#### Challenges
+- generally don't push `_targets` folder - can do it for small objects
+- targets online storage
+
+#### documentation
+- great documentation
+- nyr talk
+- intro playlist
+- targets-example
+- reprotemplate
+
+#### R file with all functions
+- how do you recommend parsing functions vs inline functions
+- default to single function per file 
+- Rstudio ctrl . shortcut
+- granularity helps with git
+
+
+#### parallelizing targets?
+- two parts - 
+  1. Because of the graph it knows what can be run in parallel
+  2. tar_make_future >>> setup parallel processes using `future` pacakge
+  3. Sometimes a lot of different things - 100 different targets -
+  branching >> like map - feed it a list of parameters that apply the same function
+
+
+### Targets chapter
+
+Very bare bones - links to talk and resources mentioned in talk
+
+### Targets intro videos -- debugging
+- Focus on environment browser
+
+- Just debugging in R 
+  - Use traceback  to find errors
+  - Use debug(_FUNCTION_) >> run FUNCTION(X)
+    - opens a browser window 
+
+#### Targets
+- get error fromt targets 
+- `tar_make()` breaks at some point
+- check link in manual -- https://books.ropensci.org/targets/debugging.html
+
+- use `tar_meta(fields = "error")`
+  - shows error message for target
+
+#### environment browser 
+- restart session 
+- load functions and `library(targets)`
+- debug(FUNCTION FROM TARGET) >> not debugging target directly
+  - `tar_make(names = BROKEN_TARGET, callr_function = NULL)`
+    - this results in a normal browser window -- targets runs as a background process so we need to bring it to the forefront
+    - 
+  
+### Targets External Files
+
+- targettopia -- tidyverse for targets
+- for rmarkdown reports - most calls should be calls to tar_read and tar_load
+- use targets to create all computations - use rmd to explain them
+
+#### External files
+
+fs::dir_tree("_targets") >>> shows file structure
+
+- need to create a target that returns a path 
+- using an external target as an outputs - 
+  - saves file and outputs a path
+    - invisible(PATH) - trying to get a side effect (saving file)
+    
+#### tarchetypes
+- use `tar_render` 
+  - name, report, options for rmarkdown render
+
+### Workflow Talk
+
+- get in the pocket
+- whats the priority? 
+  - can't write a unit test for methodology = prioritize making 
+  things clear and key decision points
+  
+#### notebooks
+- great - but slow and have tensions between code and text
+
+#### Domain specific Folder Structures 
+- `workflowr`, `represtools` -- packages that save you a lot of book keeping and decisions about structure
+- Anytime in a domain mismatch 
+- 
+
+  
+
+
+     
+
+
+
+
+
+
+
+
+- 
+
+
+
+
