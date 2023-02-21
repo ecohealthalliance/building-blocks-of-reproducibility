@@ -7,7 +7,7 @@ A typical `targets` workflow will have a file called "packages.R" that lists all
 `renv` can scan that file (and any other files in the project) to determine what the package dependencies are for a given project. 
 `renv` can then store the metadata data (version, source, etc) for those packages in the "renv.lock" file. 
 
-When adding a new package to a project with `renv` and `targets` workflow might look something like this: 
+When adding a new package to a project with `renv` and `targets` the process might look something like this: 
 
 
 1) Add package to "packages.R"
