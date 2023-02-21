@@ -5,7 +5,7 @@ while `targets` allows you to create a workflow that can be readily passed from 
 
 A typical `targets` workflow will have a file called "packages.R" that lists all the packages used in the repo. 
 `renv` can scan that file (and any other files in the project) to determine what the package dependencies are for a given project. 
-`renv can then store the metadata data (version, source, etc) for those packages in the "renv.lock" file. 
+`renv` can then store the metadata data (version, source, etc) for those packages in the "renv.lock" file. 
 
 When adding a new package to a project with `renv` and `targets` workflow might look something like this: 
 
@@ -20,16 +20,16 @@ library(some_new_package)
 
 ```
 
-2) install the package
+2) install the package from appropriate source
 
 ```
 # in R console
 
-## to install the new package 
+## install the new package 
 
-# from cran
+# from cran OR
 renv::install("some_new_package")
-# from github
+# from github OR
 renv::install("my_repo/some_new_package")
 # from bioconductor
 renv::install("bioc::some_new_package")
@@ -37,6 +37,7 @@ renv::install("bioc::some_new_package")
 
 3) Update the lock file
 ```
+# in R console
 ## to see what packages have changed or need to be installed
 renv::status()
 
