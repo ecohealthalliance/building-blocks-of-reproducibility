@@ -38,10 +38,10 @@ renv::install("bioc::some_new_package")
 3) Update the lock file
 ```
 # in R console
-## to see what packages have changed or need to be installed
+## check what packages have changed or need to be installed
 renv::status()
 
-## to update the renv.lock file
+## update the renv.lock file
 renv::snapshot()
 ```
 
