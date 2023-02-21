@@ -1,0 +1,54 @@
+The `renv` package and targets are happy partners in reproducible research workflows. 
+
+`renv` is used to manage the R package dependecnies for your project, 
+while `targets` allows you to create a workflow that can be readily passed from one machine to another. 
+
+A typical `targets` workflow will have a file called "packages.R" that lists all the packages used in the repo. 
+`renv` can scan that file (and any other files in the project) to determine what the package dependencies are for a given project. 
+`renv can then store the metadata data (version, source, etc) for those packages in the "renv.lock" file. 
+
+When adding a new package to a project with `renv` and `targets` workflow might look something like this: 
+
+
+1) Add package to "packages.R"
+
+``` 
+# in packages.R
+
+library(tidyverse)
+library(some_new_package)
+
+```
+
+2) install the package
+
+```
+# in R console
+
+## to install the new package 
+
+# from cran
+renv::install("some_new_package")
+# from github
+renv::install("my_repo/some_new_package")
+# from bioconductor
+renv::install("bioc::some_new_package")
+```
+
+3) Update the lock file
+```
+## to see what packages have changed or need to be installed
+renv::status()
+
+## to update the renv.lock file
+renv::snapshot()
+```
+
+4) Push changes to the lockfile
+```
+# in terminal
+
+git add renv.lock
+git commit -m "updated lock.file with some_new_package"
+git push
+```
