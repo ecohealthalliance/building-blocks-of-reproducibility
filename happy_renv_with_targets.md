@@ -1,4 +1,4 @@
-The `renv` package and targets are happy partners in reproducible research workflows. 
+The `renv` package and targets are partners in reproducible research workflows. 
 
 `renv` is used to manage the R package dependecnies for your project, 
 while `targets` allows you to create a workflow that can be readily passed from one machine to another. 
