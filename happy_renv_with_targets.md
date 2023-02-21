@@ -50,6 +50,7 @@ renv::snapshot()
 # in terminal
 
 git add renv.lock
+git add packages.R
 git commit -m "updated lock.file with some_new_package"
 git push
 ```
