@@ -1,4 +1,4 @@
-The `renv` package and targets are partners in reproducible research workflows. 
+The `renv` and `targets` packages are partners in reproducible research workflows. 
 
 `renv` is used to manage the R package dependecnies for your project, 
 while `targets` allows you to create a workflow that can be readily passed from one machine to another. 
@@ -7,7 +7,7 @@ A typical `targets` workflow will have a file called "packages.R" that lists all
 `renv` can scan that file (and any other files in the project) to determine what the package dependencies are for a given project. 
 `renv` can then store the metadata data (version, source, etc) for those packages in the "renv.lock" file. 
 
-When adding a new package to a project with `renv` and `targets` the process might look something like this: 
+When adding a new package to a project with `renv` and `targets`, the process might look something like this: 
 
 
 1) Add package to "packages.R"
