@@ -20,7 +20,7 @@ library(some_new_package)
 
 ```
 
-2) install the package from appropriate source
+2) install the package from appropriate source OR use `renv::hydrate` to bulk install
 
 ```
 # in R console
@@ -33,6 +33,12 @@ renv::install("some_new_package")
 renv::install("my_repo/some_new_package")
 # from bioconductor
 renv::install("bioc::some_new_package")
+
+
+## auto install
+
+renv::hydrate()
+
 ```
 
 3) Update the lock file
