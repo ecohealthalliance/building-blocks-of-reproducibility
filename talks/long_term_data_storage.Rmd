@@ -1,15 +1,74 @@
 ---
 title: "Building Blocks of Reproducibility"
-subtitle: "Strategies and workflows<br>for long term data storage"
+subtitle: "Long term research output storage"
 author: "Collin Schwantes"
-date: '2022-07-17'
-output:
-  ehastyle::eha_avenir_xar
+date: '`r Sys.Date()`'
+output: 
+  ehastyle::eha_avenir_pptx
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, fig.height=5, fig.align='center')
 ```
 
+# Research outputs are valuable
 
+Research outputs - publications, code, data, protocols, outreach materials, etc
+
+They cost:
+Time, effort, and resources
+
+They provide:
+Foundation of scientific discoveries. They are not only valuable to the researchers who collected the data but also to broader scientific community. Entire fields of research have been created by the ability to re-use data. 
+
+[Review DMP and End of Project talks]
+
+# Thought exercise: Climate Change Brainstorm 
+ - Several weeks ago we had a discussion of research questions EHA could answer or has answered relating to climate change. How might that discussion have gone differently if we had a central catalog of research outputs? 
+
+
+# Benefits of long term research output deposition
+  - Your outputs will be stored in a safe location
+  - Your outputs will be readily accessible
+  - Your outputs will have a  persistent identifier (PID) that can be cited 
+  - Your outputs will be cataloged and discoverable in searches
+  - Your research will be more FAIR
+  - You will likely be complying with funding requirements
+  - Easier for you to reuse work to get funding 
+
+# Repositories
+
+- Structured long-term file storage services that provide access research outputs
+- Most can generate persistent identifiers (PIDs)
+- Most allow you to link research outputs, people, and institutions through
+metadata. 
+
+# Repositories commonly used by EHA
+[Zenodo] - generalist, accepts essentially any file less than 50gb
+[Genbank] - specialist, accepts nucleotide data in specific formats
+[GBIF] - specialist, accepts species occurrance data in specific formats
+[Open Science Framework] - generalist, accepts essentially any file
+[Figshare] - generalist, accepts essentially any file
+[Dryad] - generalist, accepts essentially any file
+Others?
+
+# Finding an appropriate repository
+
+
+
+# Understanding metadata
+   - structural vs descriptive metadata
+   - linking items in metadata 
+   - importance of permenant IDs
+# Documentation 
+# Versioning - expecting data to change over time
+  - larger project may keep going and future versions are important 
+  - not yet (5/30/2023) implemented in deposits but will be in the near future
+      -- check in on this before the talk
+# general workflow for EHA data
+
+
+# Deposits package overview
+ - Tabular data
+ - Non-tabular data
 
