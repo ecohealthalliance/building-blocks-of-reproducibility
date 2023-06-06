@@ -43,7 +43,41 @@ Foundation of scientific discoveries. They are not only valuable to the research
 - Most allow you to link research outputs, people, and institutions through
 metadata. 
 
+# What qualifies as a good repository?
+
+1) Long-term funding and planning, including a contingency plan for unforeseen circumstances.
+2) Unique persistent identifiers are assigned to research outputs. Projects or collections may or maynot have PIDs.
+3) Metadata is required allowing researchers to discover outputs and to link outputs, people, and institutions. 
+4) Access is free and unencumbered while respecting ethical and privacy concerns 
+5) Security, integrity and confidentiality. 
+6) Provenance for research outputs. 
+
+# Generalists vs specialist Repositories
+
+Generalist repositories will accept all kinds of outputs,
+usually in all kinds of formats. They typically have requirements around descriptive
+metadata that allow objects to be discoverable. See the [GREI Initiative](
+https://datascience.nih.gov/data-ecosystem/generalist-repository-ecosystem-initiative) 
+for more on common practices between generalist repositories.
+ 
+Specialist repositories will accept particular research outputs from a particular
+area of study. Outputs have to conform to the data standard (controlled vocabularies,
+file formats, metadata) prescribed by the repository.
+
+# Finding an appropriate repository
+
+1) If your funder requires you to use a specific repository - use it
+2) If people in your field always deposit the type of data your collecting
+in a particular repository - join the herd
+3) If there is a repository that specializes in the type of data you collected and it meets your funder's criteria or EHA's criteria for a good repository? - go for it
+4) Put your data in a generalist repository. They'll take anything
+
+Repository Catalogs:
+[Re3data](https://www.re3data.org/search)
+[FAIRSharing.org](https://fairsharing.org/search?fairsharingRegistry=Database)
+
 # Repositories commonly used by EHA
+
 [Zenodo] - generalist, accepts essentially any file less than 50gb
 [Genbank] - specialist, accepts nucleotide data in specific formats
 [GBIF] - specialist, accepts species occurrance data in specific formats
@@ -52,20 +86,23 @@ metadata.
 [Dryad] - generalist, accepts essentially any file
 Others?
 
-# Finding an appropriate repository
-
-
 
 # Understanding metadata
    - structural vs descriptive metadata
    - linking items in metadata 
-   - importance of permenant IDs
+   - importance of permanent IDs
+   
 # Documentation 
+  
 # Versioning - expecting data to change over time
   - larger project may keep going and future versions are important 
   - not yet (5/30/2023) implemented in deposits but will be in the near future
       -- check in on this before the talk
-# general workflow for EHA data
+
+# Desired general workflow for EHA data
+[talk more about goals -- what do we want to create-- see end of project talk]
+- Data are stored in a collaborative and robust system (Airtable, AWS, Dropbox, Google Drive, Microsoft Office Online, etc)
+- Data are packaged for release - proper documentation
 
 
 # Deposits package overview

@@ -1,4 +1,4 @@
-## Review of the `dm` package from R
+## Review of the `dm` package for R
 
 DM allows you to bring a relational data model to R. 
 It connects your collection of dataframes into a coherent representation of data. 
