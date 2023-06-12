@@ -1,0 +1,3 @@
+Name,Type,Units,Description
+ID,character,none,Unique identification number for each entry
+Value,numeric,meters,A measurement related to the entry in meters.

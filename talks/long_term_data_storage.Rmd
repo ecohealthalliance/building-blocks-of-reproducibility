@@ -1,0 +1,109 @@
+---
+title: "Building Blocks of Reproducibility"
+subtitle: "Long term research output storage"
+author: "Collin Schwantes"
+date: '`r Sys.Date()`'
+output: 
+  ehastyle::eha_avenir_pptx
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, fig.height=5, fig.align='center')
+```
+
+# Research outputs are valuable
+
+Research outputs - publications, code, data, protocols, outreach materials, etc
+
+They cost:
+Time, effort, and resources
+
+They provide:
+Foundation of scientific discoveries. They are not only valuable to the researchers who collected the data but also to broader scientific community. Entire fields of research have been created by the ability to re-use data. 
+
+[Review DMP and End of Project talks]
+
+# Thought exercise: Climate Change Brainstorm 
+ - Several weeks ago we had a discussion of research questions EHA could answer or has answered relating to climate change. How might that discussion have gone differently if we had a central catalog of research outputs? 
+
+
+# Benefits of long term research output deposition
+  - Your outputs will be stored in a safe location
+  - Your outputs will be readily accessible
+  - Your outputs will have a  persistent identifier (PID) that can be cited 
+  - Your outputs will be cataloged and discoverable in searches
+  - Your research will be more FAIR
+  - You will likely be complying with funding requirements
+  - Easier for you to reuse work to get funding 
+
+# Repositories
+
+- Structured long-term file storage services that provide access research outputs
+- Most can generate persistent identifiers (PIDs)
+- Most allow you to link research outputs, people, and institutions through
+metadata. 
+
+# What qualifies as a good repository?
+
+1) Long-term funding and planning, including a contingency plan for unforeseen circumstances.
+2) Unique persistent identifiers are assigned to research outputs. Projects or collections may or maynot have PIDs.
+3) Metadata is required allowing researchers to discover outputs and to link outputs, people, and institutions. 
+4) Access is free and unencumbered while respecting ethical and privacy concerns 
+5) Security, integrity and confidentiality. 
+6) Provenance for research outputs. 
+
+# Generalists vs specialist Repositories
+
+Generalist repositories will accept all kinds of outputs,
+usually in all kinds of formats. They typically have requirements around descriptive
+metadata that allow objects to be discoverable. See the [GREI Initiative](
+https://datascience.nih.gov/data-ecosystem/generalist-repository-ecosystem-initiative) 
+for more on common practices between generalist repositories.
+ 
+Specialist repositories will accept particular research outputs from a particular
+area of study. Outputs have to conform to the data standard (controlled vocabularies,
+file formats, metadata) prescribed by the repository.
+
+# Finding an appropriate repository
+
+1) If your funder requires you to use a specific repository - use it
+2) If people in your field always deposit the type of data your collecting
+in a particular repository - join the herd
+3) If there is a repository that specializes in the type of data you collected and it meets your funder's criteria or EHA's criteria for a good repository? - go for it
+4) Put your data in a generalist repository. They'll take anything
+
+Repository Catalogs:
+[Re3data](https://www.re3data.org/search)
+[FAIRSharing.org](https://fairsharing.org/search?fairsharingRegistry=Database)
+
+# Repositories commonly used by EHA
+
+[Zenodo] - generalist, accepts essentially any file less than 50gb
+[Genbank] - specialist, accepts nucleotide data in specific formats
+[GBIF] - specialist, accepts species occurrance data in specific formats
+[Open Science Framework] - generalist, accepts essentially any file
+[Figshare] - generalist, accepts essentially any file
+[Dryad] - generalist, accepts essentially any file
+Others?
+
+
+# Understanding metadata
+
+   
+# Documentation 
+  
+# Versioning - expecting data to change over time
+  - larger project may keep going and future versions are important 
+  - not yet (5/30/2023) implemented in deposits but will be in the near future
+      -- check in on this before the talk
+
+# Desired general workflow for EHA data
+[talk more about goals -- what do we want to create-- see end of project talk]
+- Data are stored in a collaborative and robust system (Airtable, AWS, Dropbox, Google Drive, Microsoft Office Online, etc)
+- Data are packaged for release - proper documentation
+
+
+# Deposits package overview
+ - Tabular data
+ - Non-tabular data
+

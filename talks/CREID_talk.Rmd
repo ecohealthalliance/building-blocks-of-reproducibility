@@ -1,0 +1,208 @@
+---
+title: "An Overview of the EcoHealth Alliance Data Management Workflow"
+author: "Collin Schwantes"
+date: "2023-02-08"
+output: 
+  ehastyle::eha_avenir_pptx
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(officedown)
+library(ggplot2)
+library(rvg)
+library(ehastyle)
+```
+
+# Introduction
+
+- Formally trained as a Community Ecologist 
+- Biosurveillance Scientist [consultant] at the National Biosurveillance Integration Center
+- Data Science Craft Lead at Accenture Federal Service's Discovery Lab 
+- Data Librarian at EcoHealth Alliance
+
+
+# What do I do as a data librarian? 
+- Develop the data/research output curation strategy for EHA
+- Maintain knowledge bases 
+- Help teams with grant submissions
+- Write code to automate data curation activities
+- Ask data related questions at seminar
+
+# What are we going to talk about today
+
+- EcoHeath Alliance's general data management workflow in the context of Airtable
+- Our immediate goal is to produce high quality data that is FAIR with as little friction 
+as possible 
+- Near term, we would like that FAIR data to be structured and documented in such
+a way that harmonization is a relatively painless process. 
+
+# What is FAIR data?
+
+*F*indable *A*ccessible *I*nteroperable and *R*eusable
+
+- FAIR Data can be found, interpreted, and linked by computers and the humans who operate them 
+
+# How do we acheive FAIR status?
+
+- Well described data is deposited in searchable repositories in interoperable file formats
+- To help with this process, we lean heavily on Data Management Plans
+
+# What is a Data Management Plan?
+
+Data management plans (DMP) are living documents that help structure the creation and management of data throughout the lifecycle of a project.
+
+DMPs are flexible and do not force researchers to choose a particular technology set but rather ask probing questions. 
+
+Organizing data management in this way provides a common framework for EHA think about data without requiring specific technologies be used in the research workflow.
+
+# How do DMPs benefit EHA researchers?
+
+* They provide a scaffold for researchers to conceptualize their project
+    - Data life cycle, Resources needed, etc.
+    
+* They make it easier collaborate
+    - Defining responsibilities, Committing to using data standards, Documenting how the project works  
+    
+* They make it easier for  data to be reused
+  - Researchers get more citations, their effort contributes to knowledge creation in unexpected ways, and their results become more reproducible    
+
+* DMPs are becoming more important in funding decisions
+    - NIH, NSF, NASA, Wellcome Trust, etc. 
+
+# DMP's connect components of your research
+
+- The DMP uses persistent identifiers (PIDs) to connect authors, publications, data stored in repositories, github repositories, and other components of the research workflow. Some of this occurs automagically, other items must be curated by hand.
+
+- <img src = "img/data_mgmg_plan.png" alt = "data management plan as hub in knowledge management" width="75%"/>
+
+
+# From the DMP to the Database
+
+- The DMP describes what the general size and purpose of a database will be
+- Collect more specific use cases
+- List out the entities in the database and define their properties
+- Map out how the entities fit together (which properties link them)
+- Check that the mapping meets the use cases
+- Build base in Airtable
+- Check that the base meets the use cases
+
+# Mapping entities with Arrows.io
+
+- Simple
+- Allows you to add properties and label edges
+- Collaborative 
+
+Example:
+https://arrows.app/#/googledrive/ids=1uFfS65WW_nnppM4BTk8mQvacH3jr1KFe
+
+
+# Benefits of using airtable
+
+- Flexible "no-code" relational databases
+- Excel-like data entry interfaces
+- Type controls
+- Integrated automations
+- Robust data and metadata APIs
+- Record history
+- Synced tables as sources of truth
+- Ability to set fine grain controls on data entry
+
+# Drawbacks
+
+- The flexibility is a blessing and a curse. 
+- Not built to be used with data standards
+- Cannot handle reasonably large data (more than 100,000 rows)
+- Cannot natively create fixed data sets from which to do analysis
+
+# Descriptions and Metadata 
+
+ - We use field descriptions and a custom metadata table to properly document bases
+ - The API and manage fields tool makes this less cumbersome
+
+# Automating tasks with the API and scripting
+
+ Because of the robust API, we can automate data management tasks like quality control checks, metadata generation, and backups in R using our publicly available version of the `airtabler` package and Github Actions.  
+
+# Airtabler 
+
+- R interface for Airtable data and metadata APIs
+- Functions for generating metadata
+- Functions for exporting fixed and versioned data
+- https://github.com/ecohealthalliance/airtabler
+
+
+# Why not just use integrated automations? 
+
+- Integrated automations are not version controlled nor easily exported from 
+a base. 
+- We primarily work in R and scripting in Airtable is done in JavaScript
+- It is easy to document Github based automations in an Airtable base via the Airtable API
+
+# How are data validated?
+
+- Data are validated as they come in via one of two systems
+    - Validation reports - modifies data in Airtable
+    - Validation logs - does not modify data in Airtable
+
+# Data validation reports
+ Validation reports are generated as markdown documents and issues are recorded in 
+Airtable itself. Corrections are made directly in the base. All corrections are
+recorded automatically in the base history which is kept for 3 years. Additionally,
+validation reports are archived outside of Airtable (Google Drive, AWS S3, or DropBox). 
+
+# Data validation logs
+ Validation logs are generated and data are corrected in the log. Data are
+ingested into R and the original value is replaced by the corrected value from the log. The validation log continuously grows with the data and original data in Airtable remain unmodified. Corrected data releases are published after each pass through the validation code.
+
+
+# Where do we end up? 
+
+- Airtable works well for 95% of database needs at EHA
+- It is easy to use version controlled code for
+checking, displaying, and analyzing data
+- Combined with careful planning in the DMP, versioned exports deposited into 
+data repositories fit nicely into the FAIR framework
+
+# Where are we going?
+
+###  Automating data deposition
+
+We are currently working on creating data exports from Airtable that can be directly deposited into repositories after human review.
+
+### One Health Data Standard Suite
+
+Because of the interdisciplinary nature of our work, it can be difficult for
+researchers to pick a single data standard or single repository for their data. 
+
+We are currently compiling a set of data standards that will cover the majority 
+of projects conducted at EHA. 
+
+### Automated research output catalog 
+
+So that our work is easier to find and build off of internally, we are building 
+a research output catalog. The DMPTool makes it possible to link research outputs
+to DMPs in a central place and provides an API for accessing that data programatically. 
+We will leverage that linked data to produce a catalog in Airtable.
+
+# Thanks!
+
+
+# Sources of Truth
+
+Tables can be synced across bases - allowing users to create
+single authoritative sources for a particular data type and use them across
+many bases. 
+
+# EHA Reproducibility best practices
+
+- EHA's best practices include
+  - GIT backed code
+  - Using reliable, cloud based data stores
+  - Creating redundancy in data access
+  - Documenting processes/data early and updating documents often
+  - Re-Using templates and resources where appropriate
+  - Storing DMPs in DMPTool.org
+
+- 
+
