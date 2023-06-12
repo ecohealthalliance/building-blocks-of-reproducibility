@@ -88,9 +88,7 @@ Others?
 
 
 # Understanding metadata
-   - structural vs descriptive metadata
-   - linking items in metadata 
-   - importance of permanent IDs
+
    
 # Documentation 
   
