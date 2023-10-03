@@ -10,4 +10,6 @@ Step 3: Remove direct identifiers - be especially careful with geographies
 Step 4: Establish a k-anonymity threshold - typically 3-5 is sufficient. This means that there will be 3-5 data doubles in the 
 sample. Again, think about the population you are drawing from and the harms that would come from loss of confidentiality. 
     - Identify quais identifiers
-    - Figure out if you make classes or identifiers coarser to increase k
+    - Figure out if can you make classes or identifiers coarser to increase k
+
+SDCMicro - package for implementing K-anonymity
