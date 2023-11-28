@@ -8,6 +8,11 @@
       }
     ]
   },
+  "Python": {
+    "Version": "3.11.4",
+    "Type": "virtualenv",
+    "Name": "./bbr-env"
+  },
   "Packages": {
     "MASS": {
       "Package": "MASS",
@@ -97,6 +102,17 @@
         "utils"
       ],
       "Hash": "4c86baed78388ceb06f88e3e9a1d87f5"
+    },
+    "RcppTOML": {
+      "Package": "RcppTOML",
+      "Version": "0.2.2",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "R",
+        "Rcpp"
+      ],
+      "Hash": "c232938949fcd8126034419cc529333a"
     },
     "V8": {
       "Package": "V8",
@@ -510,10 +526,10 @@
     },
     "commonmark": {
       "Package": "commonmark",
-      "Version": "1.8.0",
+      "Version": "1.9.0",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "2ba81b120c1655ab696c935ef33ea716"
+      "Hash": "d691c61bff84bd63c383874d2d0c3307"
     },
     "cowplot": {
       "Package": "cowplot",
@@ -1469,6 +1485,16 @@
       ],
       "Hash": "01f28d4278f15c76cddbea05899c5d6f"
     },
+    "png": {
+      "Package": "png",
+      "Version": "0.1-8",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "R"
+      ],
+      "Hash": "bd54ba8a0a5faded999a7aab6e46b374"
+    },
     "polyclip": {
       "Package": "polyclip",
       "Version": "1.10-0",
@@ -1624,6 +1650,28 @@
         "utils"
       ],
       "Hash": "41b847654f567341725473431dd0d5ab"
+    },
+    "reticulate": {
+      "Package": "reticulate",
+      "Version": "1.34.0",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "Matrix",
+        "R",
+        "Rcpp",
+        "RcppTOML",
+        "graphics",
+        "here",
+        "jsonlite",
+        "methods",
+        "png",
+        "rappdirs",
+        "rlang",
+        "utils",
+        "withr"
+      ],
+      "Hash": "a69f815bcba8a055de0b08339b943f9e"
     },
     "rlang": {
       "Package": "rlang",
@@ -2119,14 +2167,14 @@
     },
     "xfun": {
       "Package": "xfun",
-      "Version": "0.31",
+      "Version": "0.41",
       "Source": "Repository",
       "Repository": "CRAN",
       "Requirements": [
         "stats",
         "tools"
       ],
-      "Hash": "a318c6f752b8dcfe9fb74d897418ab2b"
+      "Hash": "460a5e0fe46a80ef87424ad216028014"
     },
     "xml2": {
       "Package": "xml2",
